@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\RetroPortalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThemeController;
 
@@ -15,3 +16,11 @@ Route::get('/lang/{locale}', [LanguageController::class, 'set'])
 
 // Home Page
 Route::view('/','pages.home')->name('home');
+
+// Retro portal: immediate focus features
+Route::get('/',                [RetroPortalController::class, 'home'])->name('home');
+Route::get('/search',          [RetroPortalController::class, 'search'])->name('search');
+Route::get('/news',            [RetroPortalController::class, 'news'])->name('news');
+Route::get('/weather',         [RetroPortalController::class, 'weather'])->name('weather');
+Route::get('/wikipedia',       [RetroPortalController::class, 'wikipedia'])->name('wikipedia');
+Route::get('/email',           [RetroPortalController::class, 'email'])->name('email');
