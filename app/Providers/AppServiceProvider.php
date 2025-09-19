@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,35 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function ($view) {
+            $mode = session('theme', 'light');
+
+            // Palette estremamente compatibili (HTML 3.2 / attributi <body>)
+            $palettes = [
+                'light' => [
+                    'bg'    => '#ffffff',
+                    'text'  => '#000000',
+                    'link'  => '#0000ff',
+                    'vlink' => '#660099',
+                    'alink' => '#ff0000',
+                    'border'=> '#cccccc',
+                    'muted' => '#333333',
+                ],
+                'dark' => [
+                    'bg'    => '#000000',
+                    'text'  => '#e6e6e6',
+                    'link'  => '#9ecbff',
+                    'vlink' => '#c5a3ff',
+                    'alink' => '#ff7a7a',
+                    'border'=> '#444444',
+                    'muted' => '#aaaaaa',
+                ],
+            ];
+
+            $palette = $palettes[$mode] ?? $palettes['light'];
+
+            $view->with('theme_mode', $mode)
+                ->with('theme_palette', $palette);
+        });
     }
 }
