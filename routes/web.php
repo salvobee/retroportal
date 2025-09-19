@@ -13,3 +13,5 @@ Route::get('/lang/{locale}', [LanguageController::class, 'set'])
     ->where('locale', '[a-zA-Z_-]+')
     ->name('lang.set');
 
+// Home Page
+Route::view('/','pages.home')->name('home');
