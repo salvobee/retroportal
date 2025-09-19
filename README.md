@@ -1,7 +1,3 @@
-Here’s a **draft `README.md`** for your retro-friendly Laravel project, written fully in English:
-
----
-
 # Legacy Portal
 
 **Legacy Portal** is a Laravel 12 application that provides access to modern web services through a **retro-compatible interface**.
@@ -145,7 +141,3 @@ Limitations:
 ## 📜 License
 
 This project is open-source. License to be defined (MIT recommended).
-
----
-
-Do you want me to also include a **retro screenshot mockup** (ASCII style preview of the UI) in the README so it visually shows how the site looks in an old browser?
