@@ -18,7 +18,6 @@ Route::get('/lang/{locale}', [LanguageController::class, 'set'])
 Route::view('/','pages.home')->name('home');
 
 // Retro portal: immediate focus features
-Route::get('/',                [RetroPortalController::class, 'home'])->name('home');
 Route::get('/search',          [RetroPortalController::class, 'search'])->name('search');
 Route::get('/news',            [RetroPortalController::class, 'news'])->name('news');
 Route::get('/weather',         [RetroPortalController::class, 'weather'])->name('weather');
