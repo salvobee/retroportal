@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use App\Services\Search\WebSearchService;
+use App\Contracts\WebSearchService;
 use App\Services\Search\DuckDuckGoWebSearch;
+use Illuminate\Support\ServiceProvider;
 
 class WebSearchServiceProvider extends ServiceProvider
 {

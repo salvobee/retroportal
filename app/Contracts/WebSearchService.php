@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Search;
+namespace App\Contracts;
 
 interface WebSearchService
 {

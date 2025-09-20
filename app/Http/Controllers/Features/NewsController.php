@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Features;
 
+use App\Contracts\NewsService;
 use App\Http\Controllers\Controller;
-use App\Services\News\NewsService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 

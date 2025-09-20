@@ -2,7 +2,7 @@
 
 namespace App\Services\News;
 
-use App\Services\News\NewsService;
+use App\Contracts\NewsService;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 

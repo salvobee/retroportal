@@ -2,6 +2,7 @@
 
 namespace App\Services\Search;
 
+use App\Contracts\WebSearchService;
 use Illuminate\Support\Facades\Http;
 
 class DuckDuckGoWebSearch implements WebSearchService

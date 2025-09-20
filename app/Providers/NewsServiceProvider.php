@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\NewsService;
 use App\Services\News\GoogleNewsRssService;
-use App\Services\News\NewsService;
 use Illuminate\Support\ServiceProvider;
 
 class NewsServiceProvider extends ServiceProvider

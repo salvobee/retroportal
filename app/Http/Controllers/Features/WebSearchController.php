@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Features;
 
+use App\Contracts\WebSearchService;
 use App\Http\Controllers\Controller;
-use App\Services\Search\WebSearchService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 

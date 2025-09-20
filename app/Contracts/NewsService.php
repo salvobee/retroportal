@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\News;
+namespace App\Contracts;
 
 interface NewsService
 {
