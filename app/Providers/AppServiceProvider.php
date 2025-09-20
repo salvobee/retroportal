@@ -21,9 +21,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-            $mode = session('theme', 'light');
+            // Prefer session theme; fallback to cookie; default 'light'
+            $mode = session('theme');
+            if (!$mode) {
+                $mode = request()->cookie('theme', 'light');
+            }
 
-            // Palette estremamente compatibili (HTML 3.2 / attributi <body>)
+            // Ultra-compatible palettes (HTML 3.2 / <body> attributes)
             $palettes = [
                 'light' => [
                     'bg'    => '#ffffff',
