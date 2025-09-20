@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\RetroPortalController;
+use App\Http\Controllers\Settings\LanguageController;
+use App\Http\Controllers\Settings\ThemeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ThemeController;
 
 // Theme switch (already discussed)
 Route::get('/theme/{mode}', [ThemeController::class, 'set'])
