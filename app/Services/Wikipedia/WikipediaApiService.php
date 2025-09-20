@@ -43,7 +43,9 @@ class WikipediaApiService implements WikipediaService
             return [
                 'title'    => $title,
                 'url'      => "https://{$locale}.wikipedia.org/wiki/" . rawurlencode(str_replace(' ', '_', $title)),
-                'abstract' => isset($item['snippet']) ? strip_tags($item['snippet']) : null,
+                'abstract' => isset($item['snippet']) ?
+                    html_entity_decode(strip_tags($item['snippet']))
+                    : null,
                 'pageid'   => $pageid,
             ];
         })->all();
