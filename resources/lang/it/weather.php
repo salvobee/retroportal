@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'title' => 'Meteo',
+    'city' => 'Città',
+    'search' => 'Cerca',
+    'hint_search' => 'Suggerimento: digita la città (es. "Roma", "London, UK").',
+    'choose_city' => 'Scegli una città',
+    'query' => 'Ricerca',
+    'no_results' => 'Nessun risultato. Prova a specificare stato o paese (es. "Paris, FR").',
+    'new_search' => 'Nuova ricerca',
+    'location' => 'Località',
+    'unavailable' => 'Impossibile leggere i dati meteo.',
+    'condition' => 'Condizione',
+    'temperature' => 'Temperatura',
+    'feels_like' => 'Percepita',
+    'humidity' => 'Umidità',
+    'wind' => 'Vento',
+    'search_another' => 'Cerca un’altra città',
+    'limit_title' => 'Limite raggiunto',
+    'limit_page_title' => 'Limite richieste raggiunto',
+    'limit_reached' => 'Spiacenti! Il servizio meteo ha raggiunto il numero massimo di richieste consentite. Riprova più tardi.',
+    'limit_hint' => 'Suggerimento: i risultati vengono messi in cache per ridurre il numero di chiamate.',
+    'back_to_search' => 'Torna alla ricerca',
+];

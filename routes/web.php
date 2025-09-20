@@ -28,10 +28,14 @@ Route::get('/search',       WebSearchController::class)
     ->name('features.search');
 Route::get('/news',         NewsController::class)
     ->name('features.news');
-Route::get('/weather',      WeatherController::class)
-    ->name('features.weather');
 Route::get('/wikipedia',    WikipediaController::class)
     ->name('features.wikipedia');
+
+Route::prefix('weather')->name('features.weather.')->group(function () {
+    Route::get('/', [WeatherController::class, 'form'])->name('form'); // step 1
+    Route::get('/search', [WeatherController::class, 'search'])->name('search')->middleware('throttle:weather');
+    Route::get('/show', [WeatherController::class, 'show'])->name('show')->middleware('throttle:weather');
+});
 
 // Retro Proxy
 Route::get('/proxy', ProxyController::class)

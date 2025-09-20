@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'title' => 'Weather',
+    'city' => 'City',
+    'search' => 'Search',
+    'hint_search' => 'Tip: type a city (e.g., "Rome", "London, UK").',
+    'choose_city' => 'Choose a city',
+    'query' => 'Query',
+    'no_results' => 'No results. Try adding state or country (e.g., "Paris, FR").',
+    'new_search' => 'New search',
+    'location' => 'Location',
+    'unavailable' => 'Unable to read weather data.',
+    'condition' => 'Condition',
+    'temperature' => 'Temperature',
+    'feels_like' => 'Feels like',
+    'humidity' => 'Humidity',
+    'wind' => 'Wind',
+    'search_another' => 'Search another city',
+    'limit_title' => 'Limit reached',
+    'limit_page_title' => 'Request limit reached',
+    'limit_reached' => 'Sorry! The weather service has reached the maximum number of requests. Please try again later.',
+    'limit_hint' => 'Tip: results are cached to reduce API calls.',
+    'back_to_search' => 'Back to search',
+];

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -30,6 +32,15 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('theme_mode', $mode)
                 ->with('theme_palette', $palette);
+        });
+
+        RateLimiter::for('weather', function ($request) {
+            // es. 60 richieste/min per IP (aggiusta a piacere)
+            return [
+                Limit::perMinute(60)->by($request->ip()),
+                // opzionale: limite giornaliero più prudente a livello app
+                Limit::perDay(2000)->by($request->ip()),
+            ];
         });
     }
 }

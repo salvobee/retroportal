@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'openweather' => [
+        'key'   => env('OPENWEATHER_KEY'),
+        'lang'  => env('OPENWEATHER_LANG', 'en'),
+        'units' => env('OPENWEATHER_UNITS', 'metric'),
+        'base'  => 'https://api.openweathermap.org',
+    ],
+
 ];
