@@ -1,25 +1,32 @@
 <?php
 
-use App\Http\Controllers\RetroPortalController;
-use App\Http\Controllers\Settings\LanguageController;
-use App\Http\Controllers\Settings\ThemeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Settings\ThemeController;
+use App\Http\Controllers\Settings\LanguageController;
+use App\Http\Controllers\Features\WebSearchController;
+use App\Http\Controllers\Features\NewsController;
+use App\Http\Controllers\Features\WeatherController;
+use App\Http\Controllers\Features\WikipediaController;
 
-// Theme switch (already discussed)
+// Settings
 Route::get('/theme/{mode}', [ThemeController::class, 'set'])
     ->whereIn('mode', ['light','dark'])
-    ->name('theme.set');
+    ->name('settings.theme');
 
 Route::get('/lang/{locale}', [LanguageController::class, 'set'])
     ->where('locale', '[a-zA-Z_-]+')
-    ->name('lang.set');
+    ->name('settings.lang');
 
 // Home Page
-Route::view('/','pages.home')->name('home');
+Route::view('/','pages.home')
+    ->name('home');
 
-// Retro portal: immediate focus features
-Route::get('/search',          [RetroPortalController::class, 'search'])->name('search');
-Route::get('/news',            [RetroPortalController::class, 'news'])->name('news');
-Route::get('/weather',         [RetroPortalController::class, 'weather'])->name('weather');
-Route::get('/wikipedia',       [RetroPortalController::class, 'wikipedia'])->name('wikipedia');
-Route::get('/email',           [RetroPortalController::class, 'email'])->name('email');
+// Retro Portal Features
+Route::get('/search',       WebSearchController::class)
+    ->name('features.search');
+Route::get('/news',         NewsController::class)
+    ->name('features.news');
+Route::get('/weather',      WeatherController::class)
+    ->name('features.weather');
+Route::get('/wikipedia',    WikipediaController::class)
+    ->name('features.wikipedia');

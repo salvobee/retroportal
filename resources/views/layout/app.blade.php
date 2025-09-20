@@ -62,9 +62,9 @@
             <td align="right" valign="top">
                 <!-- Theme switch without JavaScript -->
                 @if($theme_mode === 'dark')
-                    <a href="{{ route('theme.set', ['mode' => 'light']) }}">{{ __('ui.theme_light') }}</a>
+                    <a href="{{ route('settings.theme', ['mode' => 'light']) }}">{{ __('ui.theme_light') }}</a>
                 @else
-                    <a href="{{ route('theme.set', ['mode' => 'dark']) }}">{{ __('ui.theme_dark') }}</a>
+                    <a href="{{ route('settings.theme', ['mode' => 'dark']) }}">{{ __('ui.theme_dark') }}</a>
                 @endif
                 <br>
 
@@ -73,9 +73,9 @@
                     <small><strong>{{ __('ui.lang.label') }}:</strong>
                         [ {{ __('ui.lang.current') }}: {{ strtoupper(app()->getLocale()) }} ]
                         |
-                        <a href="{{ route('lang.set', ['locale' => 'en']) }}">{{ __('ui.lang.en') }}</a>
+                        <a href="{{ route('settings.lang', ['locale' => 'en']) }}">{{ __('ui.lang.en') }}</a>
                         |
-                        <a href="{{ route('lang.set', ['locale' => 'it']) }}">{{ __('ui.lang.it') }}</a>
+                        <a href="{{ route('settings.lang', ['locale' => 'it']) }}">{{ __('ui.lang.it') }}</a>
                     </small>
                 </div>
             </td>
@@ -91,10 +91,10 @@
                     <strong>Menu</strong>
                     @section('nav')
                         <ul>
-                            <li><a href="{{ route('search') }}">{{ __('ui.menu.search') }}</a></li>
-                            <li><a href={{ route('news') }}>{{ __('ui.menu.news') }}</a></li>
-                            <li><a href="{{ route('weather') }}">{{ __('ui.menu.weather') }}</a></li>
-                            <li><a href="{{ route('wikipedia') }}">{{ __('ui.menu.wikipedia') }}</a></li>
+                            <li><a href="{{ route('features.search') }}">{{ __('ui.menu.search') }}</a></li>
+                            <li><a href={{ route('features.news') }}>{{ __('ui.menu.news') }}</a></li>
+                            <li><a href="{{ route('features.weather') }}">{{ __('ui.menu.weather') }}</a></li>
+                            <li><a href="{{ route('features.wikipedia') }}">{{ __('ui.menu.wikipedia') }}</a></li>
                         </ul>
                     @show
                 </div>

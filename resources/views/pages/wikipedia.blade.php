@@ -5,7 +5,7 @@
 @section('page_title', 'Wikipedia')
 
 @section('content')
-    <form class="form-inline" action="{{ route('wikipedia') }}" method="get">
+    <form class="form-inline" action="{{ route('features.wikipedia') }}" method="get">
         <table border="0" cellspacing="0" cellpadding="2">
             <tr>
                 <td><label for="q"><strong>Topic</strong></label></td>

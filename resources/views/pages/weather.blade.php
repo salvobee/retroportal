@@ -5,7 +5,7 @@
 @section('page_title', 'Weather')
 
 @section('content')
-    <form class="form-inline" action="{{ route('weather') }}" method="get">
+    <form class="form-inline" action="{{ route('features.weather') }}" method="get">
         <table border="0" cellspacing="0" cellpadding="2">
             <tr>
                 <td><label for="city"><strong>City</strong></label></td>

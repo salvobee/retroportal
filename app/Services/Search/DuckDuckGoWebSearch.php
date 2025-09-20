@@ -4,7 +4,7 @@ namespace App\Services\Search;
 
 use Illuminate\Support\Facades\Http;
 
-class DuckDuckGoSearch implements SearchService
+class DuckDuckGoWebSearch implements WebSearchService
 {
     /**
      * Query DuckDuckGo Instant Answer API.

@@ -5,7 +5,7 @@
 @section('page_title', __('ui.pages.search'))
 
 @section('content')
-    <form class="form-inline" action="{{ route('search') }}" method="get">
+    <form class="form-inline" action="{{ route('features.search') }}" method="get">
         <table border="0" cellspacing="0" cellpadding="2">
             <tr>
                 <td><label for="q"><strong>{{ app()->getLocale() === 'it' ? 'Query' : 'Query' }}</strong></label></td>

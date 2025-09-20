@@ -2,7 +2,7 @@
 
 namespace App\Services\Search;
 
-interface SearchService
+interface WebSearchService
 {
     /**
      * Perform a web search and return a normalized payload suitable for legacy rendering.
