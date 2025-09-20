@@ -26,4 +26,10 @@ return [
         'en' => 'English',
         'it' => 'Italian',
     ],
+    'actions' => [
+        'search' => 'Search',
+    ],
+    'messages' => [
+        'no_results' => 'No results found.',
+    ]
 ];

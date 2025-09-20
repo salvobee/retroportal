@@ -1,24 +1,28 @@
-{{-- Wikipedia: text-first lookup --}}
 @extends('layout.app')
 
-@section('title', 'Wikipedia')
-@section('page_title', 'Wikipedia')
+@section('title', __('ui.menu.wikipedia'))
+@section('page_title', __('ui.menu.wikipedia'))
 
 @section('content')
-    <form class="form-inline" action="{{ route('features.wikipedia') }}" method="get">
-        <table border="0" cellspacing="0" cellpadding="2">
-            <tr>
-                <td><label for="q"><strong>Topic</strong></label></td>
-                <td><input id="q" type="text" name="q" value="{{ $q }}" size="40"></td>
-                <td><input type="submit" value="Lookup"></td>
-            </tr>
-        </table>
+    <form method="get" action="{{ route('features.wikipedia') }}">
+        <input type="text" name="q" value="{{ $query }}" size="40">
+        <input type="submit" value="{{ __('ui.actions.search') }}">
     </form>
 
     <hr noshade size="1">
 
-    @if(strlen($q))
-        <p class="muted">Topic: <em>{{ $q }}</em></p>
-        <p>Summary and references will appear here (server integration pending).</p>
+    @if($query && empty($results))
+        <p><em>{{ __('ui.messages.no_results') }}</em></p>
     @endif
+
+    <ul>
+        @foreach($results as $item)
+            <li>
+                <a href="{{ route('features.proxy', ['url' => $item['url']]) }}">
+                    {{ $item['title'] }}
+                </a><br>
+                <small class="muted">{{ $item['abstract'] }}</small>
+            </li>
+        @endforeach
+    </ul>
 @endsection
