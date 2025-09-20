@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Features\ImageProxyController;
+use App\Http\Controllers\Features\ProxyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Settings\ThemeController;
 use App\Http\Controllers\Settings\LanguageController;
@@ -30,3 +32,9 @@ Route::get('/weather',      WeatherController::class)
     ->name('features.weather');
 Route::get('/wikipedia',    WikipediaController::class)
     ->name('features.wikipedia');
+
+// Retro Proxy
+Route::get('/proxy', ProxyController::class)
+    ->name('features.proxy');
+Route::get('/proxy/image', ImageProxyController::class)
+    ->name('features.proxy.image');
