@@ -16,7 +16,7 @@
                 <tr valign="top">
                     <td width="5">•</td>
                     <td>
-                        <a href="{{ $item['url'] }}">{{ $item['title'] }}</a>
+                        <x-external-link url="{{ $item['url'] }}">{{ $item['title'] }}</x-external-link>
                         @if($item['source'])
                             <br><small class="muted">{{ $item['source'] }}</small>
                         @endif

@@ -28,7 +28,7 @@
                         @if($results['abstract'])
                             {{ $results['abstract'] }}
                             @if($results['abstract_url'])
-                                <br><small><a href="{{ $results['abstract_url'] }}">{{ $results['abstract_url'] }}</a></small>
+                                <br><small><x-external-link url="{{ $results['abstract_url'] }}">{{ $results['abstract_url'] }}</x-external-link></small>
                             @endif
                         @endif
                     </td>
@@ -44,7 +44,7 @@
                     <tr>
                         <td width="5">•</td>
                         <td>
-                            <a href="{{ $t['url'] }}">{{ $t['text'] }}</a><br>
+                            <x-external-link url="{{ $t['url'] }}">{{ $t['text'] }}</x-external-link><br>
                             <small class="muted">{{ $t['url'] }}</small>
                         </td>
                     </tr>
