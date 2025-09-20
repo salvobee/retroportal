@@ -6,7 +6,7 @@ return [
     'theme_light' => 'Switch to Light',
     'theme_dark'  => 'Switch to Dark',
     'menu' => [
-        'search'   => 'Search',
+        'search'   => 'Web Search',
         'news'     => 'News',
         'weather'  => 'Weather',
         'wikipedia'=> 'Wikipedia',
@@ -15,7 +15,7 @@ return [
     ],
     'pages' => [
         'home'      => 'Welcome',
-        'search'    => 'Search',
+        'search'    => 'Web Search',
         'news'      => 'News',
         'weather'   => 'Weather',
         'wikipedia' => 'Wikipedia',

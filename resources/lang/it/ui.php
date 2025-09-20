@@ -6,7 +6,7 @@ return [
     'theme_light' => 'Passa a Chiaro',
     'theme_dark'  => 'Passa a Scuro',
     'menu' => [
-        'search'   => 'Cerca',
+        'search'   => 'Ricerca Web',
         'news'     => 'Notizie',
         'weather'  => 'Meteo',
         'wikipedia'=> 'Wikipedia',
@@ -15,7 +15,7 @@ return [
     ],
     'pages' => [
         'home'      => 'Benvenuto',
-        'search'    => 'Cerca',
+        'search'    => 'Ricerca Web',
         'news'      => 'Notizie',
         'weather'   => 'Meteo',
         'wikipedia' => 'Wikipedia',
