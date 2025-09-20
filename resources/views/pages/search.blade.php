@@ -1,19 +1,24 @@
-{{-- resources/views/pages/search.blade.php --}}
 @extends('layout.app')
 
 @section('title', __('ui.pages.search'))
 @section('page_title', __('ui.pages.search'))
 
 @section('content')
-    <form class="form-inline" action="{{ route('features.search') }}" method="get">
-        <table border="0" cellspacing="0" cellpadding="2">
-            <tr>
-                <td><label for="q"><strong>{{ app()->getLocale() === 'it' ? 'Query' : 'Query' }}</strong></label></td>
-                <td><input id="q" type="text" name="q" value="{{ $q }}" size="40"></td>
-                <td><input type="submit" value="{{ app()->getLocale() === 'it' ? 'Cerca' : 'Search' }}"></td>
-            </tr>
-        </table>
-    </form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td align="center">
+                <form class="form-inline" action="{{ route('features.search') }}" method="get">
+                    <table border="0" cellspacing="0" cellpadding="2">
+                        <tr>
+                            <td align="right"><label for="q"><strong>{{ app()->getLocale() === 'it' ? 'Query' : 'Query' }}</strong></label></td>
+                            <td><input id="q" type="text" name="q" value="{{ $q }}" size="40"></td>
+                            <td><input type="submit" value="{{ app()->getLocale() === 'it' ? 'Cerca' : 'Search' }}"></td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
 
     <hr noshade size="1">
 

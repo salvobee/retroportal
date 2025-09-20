@@ -1,4 +1,3 @@
-{{-- resources/views/pages/home.blade.php --}}
 @extends('layout.app')
 
 @section('title', __('ui.pages.home'))
@@ -9,7 +8,7 @@
     <ul>
         <li><a href="{{ route('features.search') }}">{{ __('ui.menu.search') }}</a></li>
         <li><a href="{{ route('features.news') }}">{{ __('ui.menu.news') }}</a></li>
-        <li><a href="{{ route('features.weather') }}">{{ __('ui.menu.weather') }}</a></li>
+        <li><a href="{{ route('features.weather.form') }}">{{ __('ui.menu.weather') }}</a></li>
         <li><a href="{{ route('features.wikipedia') }}">{{ __('ui.menu.wikipedia') }}</a></li>
     </ul>
 @endsection

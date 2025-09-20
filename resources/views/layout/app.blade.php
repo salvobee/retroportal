@@ -15,17 +15,18 @@
         /* <![CDATA[ */
         /* BASE: compatibile con historical browsers */
         body { margin: 8px; font-family: Arial, Helvetica, sans-serif; }
-        .wrap { margin: 0; }
         .site-name { font-weight: bold; }
         .muted { font-size: 90%; color: {{ $theme_palette['muted'] }}; }
         hr { border: 0; height: 1px; background: {{ $theme_palette['border'] }}; }
         .nav { margin: 6px 0; }
         .nav a { text-decoration: none; }
         .theme, .lang { font-size: 90%; }
+        /* BASE: aggiungi padding laterale minimo anche sui legacy */
+        .wrap { margin: 0; padding: 0 6px; }
 
-        /* ENHANCEMENT per browser moderni */
+        /* moderni: centratura + un po' più di aria */
         @media screen and (min-width: 640px) {
-            .wrap { max-width: 72ch; margin: 0 auto; padding: 0 8px; }
+            .wrap { max-width: 72ch; margin: 0 auto; padding: 0 12px; }
         }
         @media screen and (min-width: 960px) {
             .wrap { max-width: 960px; }
@@ -83,14 +84,14 @@
         <strong>Menu:</strong>
         <a href="{{ route('features.search') }}">{{ __('ui.menu.search') }}</a> |
         <a href="{{ route('features.news') }}">{{ __('ui.menu.news') }}</a> |
-        <a href="{{ route('features.weather') }}">{{ __('ui.menu.weather') }}</a> |
+        <a href="{{ route('features.weather.form') }}">{{ __('ui.menu.weather') }}</a> |
         <a href="{{ route('features.wikipedia') }}">{{ __('ui.menu.wikipedia') }}</a>
     </div>
     <hr noshade size="1">
 
     <!-- CONTENT -->
     <a name="content"></a>
-    <h1>
+    <h1 align="center">
         @hasSection('page_title')
             @yield('page_title')
         @else

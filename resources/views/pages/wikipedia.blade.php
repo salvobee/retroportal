@@ -4,10 +4,16 @@
 @section('page_title', __('ui.menu.wikipedia'))
 
 @section('content')
-    <form method="get" action="{{ route('features.wikipedia') }}">
-        <input type="text" name="q" value="{{ $query }}" size="40">
-        <input type="submit" value="{{ __('ui.actions.search') }}">
-    </form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td align="center">
+                <form method="get" action="{{ route('features.wikipedia') }}">
+                    <input type="text" name="q" value="{{ $query }}" size="40">
+                    <input type="submit" value="{{ __('ui.actions.search') }}">
+                </form>
+            </td>
+        </tr>
+    </table>
 
     <hr noshade size="1">
 
