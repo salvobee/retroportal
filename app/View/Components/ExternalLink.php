@@ -12,7 +12,7 @@ class ExternalLink extends Component
     public string $proxiedUrl;
     public bool $isValidUrl;
     public ?string $title;
-    public string $target;
+    public ?string $target;
 
     /**
      * Create a new component instance.
@@ -20,7 +20,7 @@ class ExternalLink extends Component
     public function __construct(
         string $url = '',
         ?string $title = null,
-        string $target = '_blank'
+        ?string $target = null
     ) {
         $this->originalUrl = trim($url);
         $this->title = $title;

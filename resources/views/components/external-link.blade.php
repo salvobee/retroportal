@@ -12,7 +12,7 @@
 @if($isValidUrl)
     <a href="{{ $proxiedUrl }}" 
        @if($title) title="{{ $title }}" @endif
-       target="{{ $target }}"
+       @if($target) target="{{ $target }}" @endif
        {{ $attributes }}>{{ $slot->isEmpty() ? $originalUrl : $slot }}</a>
 @else
     {{-- Fallback for invalid URLs --}}
