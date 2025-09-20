@@ -1,45 +1,83 @@
-# Legacy Portal
+# RetroPortal
 
-**Legacy Portal** is a Laravel 12 application that provides access to modern web services through a **retro-compatible interface**.
-The goal is to make the modern web accessible from **obsolete or text-based browsers** (e.g., Classilla on Mac OS9, Internet Explorer 1.0 on Windows 95, Lynx, etc.).
+**RetroPortal** is a Laravel 12 application that brings the **modern web** to **retro and text-based browsers** (Mac OS9 Classilla, Windows 95 Internet Explorer 1.0, Lynx, etc.).
 
-It uses **server-side integrations** (APIs) to fetch modern content and renders it as **minimal HTML 3.2 markup** with inline attributes, ensuring compatibility with very old browsers.
-
----
-
-## ✨ Features (in progress)
-
-* **Language selector** (multi-language interface with Laravel Localization)
-* **Theme selector** (light/dark themes implemented with legacy `<body>` attributes)
-* **Search** via DuckDuckGo Instant Answer API (localized by session language)
-* **News** (planned, via RSS aggregator or API like Google News)
-* **Weather** (planned, via OpenWeather or similar)
-* **Wikipedia** (planned, via Wikipedia API, text-only summaries)
-* Future integrations:
-
-    * Social Media feeds (Facebook, Instagram, X/Twitter)
-    * YouTube (public videos, trending lists)
-    * Spotify (charts, playback info)
-    * Podcasts & Web Radio (MP3/PLS links usable on old players)
+It fetches modern content **server-side** and re-renders it in **HTML 3.2** with minimal attributes, ensuring maximum compatibility.
 
 ---
 
-## 🏗 Project structure
+## ✨ Features
 
-* **`resources/views/layout/app.blade.php`**
-  Main layout, legacy-friendly (HTML 3.2 + inline attributes + minimal CSS).
+* 🌐 **Reader Proxy**
 
-* **`resources/lang/{locale}/ui.php`**
-  Translation files for menu labels, theme toggle, etc.
+    * Browse modern HTTPS websites from legacy HTTP-only browsers.
+    * Fetches pages server-side, strips JavaScript & CSS, rewrites links and images through the proxy.
+    * Detects AMP pages or uses a “reader mode” (Readability) for simplified content.
+    * Always shows a minimal header with “Open Original” + navigation.
 
-* **`app/Http/Middleware/SetLocale.php`**
-  Reads current language from session and applies it to the application.
+* 🔎 **Web Search**
 
-* **`app/Services/Search/`**
-  Service layer for search engines. Current implementation: DuckDuckGo.
+    * DuckDuckGo Instant Answer API.
+    * Localized results (`kl`, `hl` params based on session language).
+    * Links automatically proxified through the Reader Proxy.
 
-* **`app/Http/Controllers/RetroPortalController.php`**
-  Page controllers for Search, News, Weather, Wikipedia.
+* 📰 **News**
+
+    * Google News RSS feeds (localized by language).
+    * Returns clean headlines with proxified links.
+    * Caching for efficiency and retro responsiveness.
+
+* 🌍 **Multi-language UI**
+
+    * Current: English (`en`), Italian (`it`).
+    * Language preference stored in session and cookie.
+
+* 🎨 **Theming**
+
+    * Light/Dark themes.
+    * Implemented with legacy `<body>` color attributes for full backward compatibility.
+    * Theme preference stored in session and cookie.
+
+---
+
+## 🏗 Project Structure
+
+### Controllers
+
+Organized by **namespace**:
+
+* `App\Http\Controllers\Settings\ThemeController`
+* `App\Http\Controllers\Settings\LanguageController`
+* `App\Http\Controllers\Features\WebSearchController`
+* `App\Http\Controllers\Features\NewsController`
+* `App\Http\Controllers\Features\ProxyController`
+* `App\Http\Controllers\Features\ImageProxyController`
+* `App\Http\Controllers\Features\WeatherController` *(planned)*
+* `App\Http\Controllers\Features\WikipediaController` *(planned)*
+
+### Services
+
+* `App\Services\Search\DuckDuckGoWebSearch`
+* `App\Services\News\GoogleNewsRssService`
+* `App\Services\Proxy\ReaderProxyService`
+
+### Support
+
+* `App\Support\UrlProxy` → helper for proxifying links and images.
+
+### Middleware
+
+* `App\Http\Middleware\SetLocale` → applies session/cookie locale to app.
+
+### Views
+
+* `resources/views/layout/app.blade.php` → minimal global layout.
+* `resources/views/pages/*.blade.php` → feature pages (home, search, news, proxy, etc.).
+
+### Localization
+
+* `resources/lang/en/ui.php`
+* `resources/lang/it/ui.php`
 
 ---
 
@@ -48,96 +86,100 @@ It uses **server-side integrations** (APIs) to fetch modern content and renders 
 * PHP 8.2+
 * Laravel 12.30.1
 * Composer
-* A writable `storage/` directory (sessions & cache)
+* `file` session driver recommended for retro setups
+* `mbstring` extension for encoding normalization
 
 ---
 
 ## 🚀 Installation
 
-1. Clone this repository:
+```bash
+git clone https://github.com/yourname/retroportal.git
+cd retroportal
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan serve
+```
 
-   ```bash
-   git clone https://github.com/salvobee/legacy-portal.git
-   cd legacy-portal
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   composer install
-   ```
-
-3. Create `.env`:
-
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-
-4. Configure session driver (default `file` is fine):
-
-   ```env
-   SESSION_DRIVER=file
-   ```
-
-5. Run the development server:
-
-   ```bash
-   php artisan serve
-   ```
-
-6. Open `http://localhost:8000` in your retro browser (or a modern one for testing).
+Open `http://localhost:8000` in your retro browser (or a modern one for testing).
 
 ---
 
-## 🌍 Multi-language support
+## 🌍 Multi-language
 
-* Current supported locales: **English (en)**, **Italian (it)**
-* Language is stored in session and applied via middleware.
-* To switch language:
-
-    * Click the links in the layout header (`English | Italiano`)
-    * Or visit `/lang/en` or `/lang/it`
+* Default: English (`en`)
+* Italian (`it`) available
+* Switch via `/lang/en` or `/lang/it` (or header links).
+* Language preference stored in **session + cookie**.
 
 ---
 
 ## 🎨 Theming
 
-* Two themes available: **Light** and **Dark**
-* Implemented using legacy `<body bgcolor>` and link color attributes
-* Switch via header link (stored in session)
+* Two modes: **Light** and **Dark**.
+* Switch via `/theme/light` or `/theme/dark`.
+* Preference stored in **session + cookie**.
 
 ---
 
-## 🔎 Search integration
+## 📰 News
 
-* Current implementation: **DuckDuckGo Instant Answer API**
-* Localized by session language (`kl` + `hl` params)
-* Returns:
+* Fetched from **Google News RSS**.
+* Localized by `app()->getLocale()`:
 
-    * Abstract (from Wikipedia or other sources)
-    * Related topics (links + text)
+    * `it` → `hl=it&gl=IT&ceid=IT:it`
+    * `en` → `hl=en&gl=US&ceid=US:en`
+    * etc.
+* Cached for 5 minutes.
 
-Limitations:
+---
 
-* Some abstracts only available in English if the requested language has no entry.
-* Future improvement: automatic translation fallback.
+## 🔎 Search
+
+* Implemented with **DuckDuckGo Instant Answer API**.
+* Localized with `hl` and `kl` parameters.
+* Results simplified and proxified through Reader Proxy.
+
+---
+
+## 🌐 Reader Proxy (Main Feature)
+
+* Entry point: `/proxy?url=https://example.com`
+* Fetches HTTPS content server-side → serves via HTTP.
+* Simplifies markup:
+
+    * Removes scripts, CSS, iframes.
+    * Detects AMP pages when available.
+    * Uses **Readability** if installed (`fivefilters/readability.php`).
+* Rewrites:
+
+    * `<a href>` → `/proxy?url=...`
+    * `<img src>` → `/proxy/image?url=...`
+* Image proxy (`/proxy/image`) serves HTTPS images as HTTP.
+* Minimal header with:
+
+    * Current site name.
+    * “Open original” link.
+    * Link back to Home.
 
 ---
 
 ## 🛠 Roadmap
 
-* [x] Multilingual UI (Laravel Localization)
-* [x] Theme selector (light/dark)
-* [x] DuckDuckGo search integration
-* [ ] News aggregation (RSS, Google News API alternative)
-* [ ] Weather integration (OpenWeather API)
-* [ ] Wikipedia summaries (via MediaWiki API)
-* [ ] Translation fallback for abstracts (Google Translate API or DeepL)
-* [ ] OAuth integrations (Spotify, YouTube, Social Media)
+* [x] Multi-language support (session + cookie).
+* [x] Theme selector (session + cookie).
+* [x] DuckDuckGo search integration.
+* [x] Google News RSS integration.
+* [x] Reader Proxy (core feature).
+* [ ] Wikipedia summaries (via MediaWiki API).
+* [ ] Weather integration (OpenWeather).
+* [ ] Domain allowlist / HMAC protection for proxy.
+* [ ] Optional down-conversion of images (JPEG/GIF fallback).
+* [ ] Translation fallback for abstracts/news.
 
 ---
 
 ## 📜 License
 
-This project is open-source. License to be defined (MIT recommended).
+This project is **Free and Open Source**. License: **MIT** (recommended).
