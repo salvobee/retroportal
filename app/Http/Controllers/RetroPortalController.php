@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Services\Search\SearchService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class RetroPortalController extends Controller
 {
-    public function search(Request $request, SearchService $searchService)
+    public function search(Request $request, SearchService $searchService): View
     {
         $q = (string) $request->query('q', '');
         $results = null;
@@ -24,7 +25,7 @@ class RetroPortalController extends Controller
         ]);
     }
 
-    public function news(Request $request)
+    public function news(Request $request): View
     {
         // NOTE: Later connect to a news backend (RSS aggregator, GNews API, etc.).
         return view('pages.news', [
@@ -32,7 +33,7 @@ class RetroPortalController extends Controller
         ]);
     }
 
-    public function weather(Request $request)
+    public function weather(Request $request): View
     {
         // NOTE: Later integrate with a weather provider (OpenWeather/WeatherAPI).
         return view('pages.weather', [
@@ -41,7 +42,7 @@ class RetroPortalController extends Controller
         ]);
     }
 
-    public function wikipedia(Request $request)
+    public function wikipedia(Request $request): View
     {
         // NOTE: Later query Wikipedia API server-side and render text-only extracts.
         return view('pages.wikipedia', [
