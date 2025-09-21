@@ -82,11 +82,11 @@
     <hr noshade size="1">
     <div class="nav" id="navigation">
         <strong>Menu:</strong>
-        <a href="{{ route('features.search') }}">{{ __('ui.menu.search') }}</a> |
-        <a href="{{ route('features.news') }}">{{ __('ui.menu.news') }}</a> |
-        <a href="{{ route('features.weather.form') }}">{{ __('ui.menu.weather') }}</a> |
-        <a href="{{ route('features.wikipedia') }}">{{ __('ui.menu.wikipedia') }}</a> |
-        <a href="{{ route('chatbot.index') }}">{{ __('ui.menu.chatbot') }}</a>
+        <a href="{{ route('features.search') }}">{{ __('web-search.title') }}</a> |
+        <a href="{{ route('features.news') }}">{{ __('news.title') }}</a> |
+        <a href="{{ route('features.weather.form') }}">{{ __('weather.title') }}</a> |
+        <a href="{{ route('features.wikipedia') }}">{{ __('encyclopedia.title') }}</a> |
+        <a href="{{ route('chatbot.index') }}">{{ __('ai.title') }}</a>
     </div>
     <hr noshade size="1">
 

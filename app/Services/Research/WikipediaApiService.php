@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Http;
 
 class WikipediaApiService implements EncyclopediaService
 {
+    public function getSourceName(): string
+    {
+        return 'Wikipedia';
+    }
     public function search(string $query, string $locale = 'en', int $limit = 10): array
     {
         if (trim($query) === '') {

@@ -4,7 +4,7 @@
 @section('page_title', __('ai.page_title'))
 
 @section('content')
-    <center>
+    <div align="center">
         <form action="{{ route('chatbot.send') }}" method="post">
             @csrf
             <table border="0" cellspacing="4" cellpadding="2">
@@ -18,7 +18,7 @@
             <p style="color:#b00;">{{ $message }}</p>
             @enderror
         </form>
-    </center>
+    </div>
 
     <hr noshade size="1">
 
@@ -35,13 +35,15 @@
                 <p><strong>{{ __('ai.ai') }}:</strong> {{ $entry['content'] }}</p>
             @endif
         @empty
-            <p class="muted">{{ __('ai.start_hint') }}</p>
+            <p align="center" class="muted">{{ __('ai.start_hint') }}</p>
         @endforelse
     </div>
 
-    <hr noshade size="1">
-    <form action="{{ route('chatbot.clear') }}" method="post">
-        @csrf
-        <input type="submit" value="{{ __('ai.clear') }}">
-    </form>
+    @if(!empty($history))
+        <hr noshade size="1">
+        <form action="{{ route('chatbot.clear') }}" method="post">
+            @csrf
+            <input type="submit" value="{{ __('ai.clear') }}">
+        </form>
+    @endif
 @endsection

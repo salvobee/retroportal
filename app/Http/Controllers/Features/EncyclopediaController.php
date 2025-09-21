@@ -9,19 +9,20 @@ use Illuminate\View\View;
 
 class EncyclopediaController extends Controller
 {
-    public function __invoke(Request $request, EncyclopediaService $wikipedia): View
+    public function __invoke(Request $request, EncyclopediaService $encyclopediaService): View
     {
         $q = (string) $request->query('q', '');
         $locale = app()->getLocale() ?? 'en';
 
         $results = $q !== ''
-            ? $wikipedia->search($q, $locale, 10)
+            ? $encyclopediaService->search($q, $locale, 10)
             : [];
 
-        return view('pages.wikipedia', [
-            'page_title' => __('ui.menu.wikipedia'),
+        return view('pages.encyclopedia', [
+            'page_title' => __('encyclopedia.title'),
             'query'      => $q,
             'results'    => $results,
+            'source'     => $encyclopediaService->getSourceName(),
         ]);
     }
 }

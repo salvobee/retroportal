@@ -1,15 +1,11 @@
 @extends('layout.app')
 
-@section('title', __('ui.pages.news'))
-@section('page_title', __('ui.pages.news'))
+@section('title', __('news.title'))
+@section('page_title', __('news.page_title'))
 
 @section('content')
     @if(empty($items))
-        <p class="muted">
-            {{ app()->getLocale() === 'it'
-                ? 'Nessuna notizia disponibile al momento.'
-                : 'No news available at the moment.' }}
-        </p>
+        <p class="muted">{{ __('news.empty') }}</p>
     @else
         <table width="100%" border="0" cellspacing="0" cellpadding="4">
             @foreach($items as $item)
@@ -18,11 +14,11 @@
                     <td>
                         <x-external-link url="{{ $item['url'] }}">{{ $item['title'] }}</x-external-link>
                         @if($item['source'])
-                            <br><small class="muted">{{ $item['source'] }}</small>
+                            <br><small class="muted">{{ __('news.source') }}: {{ $item['source'] }}</small>
                         @endif
                         @if($item['published_at'])
                             <br><small class="muted">
-                                {{ date('Y-m-d H:i', $item['published_at']) }}
+                                {{ __('news.published_at') }}: {{ date('Y-m-d H:i', $item['published_at']) }}
                             </small>
                         @endif
                     </td>

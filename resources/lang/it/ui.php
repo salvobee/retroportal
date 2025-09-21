@@ -5,22 +5,11 @@ return [
     'site_name' => config('app.name', 'Sito'),
     'theme_light' => 'Passa a Chiaro',
     'theme_dark'  => 'Passa a Scuro',
-    'menu' => [
-        'search'   => 'Ricerca Web',
-        'news'     => 'Notizie',
-        'weather'  => 'Meteo',
-        'wikipedia'=> 'Wikipedia',
-        'sitemap'  => 'Mappa del sito',
-        'textonly' => 'Solo testo',
-        'chatbot' => 'Chatbot AI',
-    ],
+
     'pages' => [
-        'home'      => 'Benvenuto',
-        'search'    => 'Ricerca Web',
-        'news'      => 'Notizie',
-        'weather'   => 'Meteo',
-        'wikipedia' => 'Wikipedia',
+        'home' => 'Benvenuto',
     ],
+
     'lang' => [
         'label' => 'Lingua',
         'current' => 'Corrente',

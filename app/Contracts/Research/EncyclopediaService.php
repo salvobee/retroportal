@@ -5,6 +5,13 @@ namespace App\Contracts\Research;
 interface EncyclopediaService
 {
     /**
+     * Return the source name (e.g. "Wikipedia").
+     *
+     * @return string
+     */
+    public function getSourceName(): string;
+
+    /**
      * Search Wikipedia entries for a given query and locale.
      *
      * @param string $query   Search keywords.

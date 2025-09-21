@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Meteo',
+    'page_title' => 'Meteo',
     'city' => 'Città',
     'search' => 'Cerca',
     'hint_search' => 'Suggerimento: digita la città (es. "Roma", "London, UK").',

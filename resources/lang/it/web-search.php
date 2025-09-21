@@ -2,8 +2,8 @@
 
 return [
     // Pagina
-    'title'      => 'Ricerca',
-    'page_title' => 'Ricerca',
+    'title'      => 'Ricerca Web',
+    'page_title' => 'Ricerca Web',
 
     // Form
     'form' => [
