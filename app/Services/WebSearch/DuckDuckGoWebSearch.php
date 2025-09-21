@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Search;
+namespace App\Services\WebSearch;
 
-use App\Contracts\WebSearchService;
+use App\Contracts\WebSearch\WebSearchService;
 use Illuminate\Support\Facades\Http;
 
 class DuckDuckGoWebSearch implements WebSearchService
