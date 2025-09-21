@@ -2,14 +2,15 @@
 
 return [
     'title' => 'Encyclopedia',
+    'labels' => [
+        'query' => 'Query',
+        'source' => 'Source',
+    ],
     'actions' => [
         'search' => 'Search',
     ],
-    'labels' => [
-        'source' => 'Source',
-        'query'  => 'Query',
-    ],
     'messages' => [
-        'no_results' => 'No results found. Try different keywords.',
+        'no_results' => 'No results found.',
+        'start_hint' => 'Type a term to search the encyclopedia.',
     ],
 ];

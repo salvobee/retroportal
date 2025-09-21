@@ -2,14 +2,15 @@
 
 return [
     'title' => 'Enciclopedia',
+    'labels' => [
+        'query' => 'Ricerca',
+        'source' => 'Fonte',
+    ],
     'actions' => [
         'search' => 'Cerca',
     ],
-    'labels' => [
-        'source' => 'Fonte',
-        'query'  => 'Parola Chiave',
-    ],
     'messages' => [
-        'no_results' => 'Nessun risultato trovato. Prova con parole chiave diverse.',
+        'no_results' => 'Nessun risultato trovato.',
+        'start_hint' => 'Inserisci un termine per cercare nell’enciclopedia.',
     ],
 ];
