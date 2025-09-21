@@ -1,11 +1,11 @@
 {{-- News Articles: Articles from a specific source --}}
 @extends('layout.app')
 
-@section('title', $source['name'] . ' - ' . __('ui.pages.news'))
+@section('title', $source['name'] . ' - ' . __('news.title'))
 @section('page_title', $source['name'])
 
 @section('breadcrumbs')
-    <a href="{{ route('features.news.index') }}">{{ __('ui.pages.news') }}</a> &gt; {{ $source['name'] }}
+    <a href="{{ route('features.news.index') }}">{{ __('news.title') }}</a> &gt; {{ $source['name'] }}
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
 
     @if(empty($articles))
         <p class="muted">{{ __('news.no_articles') }}</p>
-        
+
         <p>
             <a href="{{ route('features.news.index') }}">&laquo; {{ __('news.back_to_sources') }}</a>
         </p>
@@ -29,11 +29,11 @@
                         <strong>
                             <x-external-link url="{{ $article['url'] }}">{{ $article['title'] }}</x-external-link>
                         </strong>
-                        
+
                         @if($article['description'])
                             <br><span class="muted">{{ $article['description'] }}</span>
                         @endif
-                        
+
                         @if($article['published_at'])
                             <br><small class="muted">
                                 {{ __('news.published_at') }}:
@@ -44,15 +44,15 @@
                         @endif
                     </td>
                 </tr>
-                
+
                 @if(!$loop->last)
                     <tr><td colspan="2"><hr noshade size="1"></td></tr>
                 @endif
             @endforeach
         </table>
-        
+
         <hr noshade size="1">
-        
+
         <p>
             <a href="{{ route('features.news.index') }}">&laquo; {{ __('news.back_to_sources') }}</a>
             |
