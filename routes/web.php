@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\ApiKeyController;
 use App\Http\Controllers\Features\ChatbotController;
+use App\Http\Controllers\Features\EncyclopediaController;
 use App\Http\Controllers\Features\ImageProxyController;
+use App\Http\Controllers\Features\NewsController;
 use App\Http\Controllers\Features\ProxyController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Features\WeatherController;
+use App\Http\Controllers\Features\WebSearchController;
+use App\Http\Controllers\Settings\LanguageController;
+use App\Http\Controllers\Settings\ThemeController;
+use App\Http\Controllers\User\ApiKeyController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Middleware\ChatbotDailyLimit;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Settings\ThemeController;
-use App\Http\Controllers\Settings\LanguageController;
-use App\Http\Controllers\Features\WebSearchController;
-use App\Http\Controllers\Features\NewsController;
-use App\Http\Controllers\Features\WeatherController;
-use App\Http\Controllers\Features\EncyclopediaController;
 
 // Settings
 Route::get('/theme/{mode}', [ThemeController::class, 'set'])
