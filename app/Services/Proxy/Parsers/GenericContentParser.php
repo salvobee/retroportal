@@ -2,10 +2,10 @@
 
 namespace App\Services\Proxy\Parsers;
 
-use App\Contracts\ContentParser;
+use App\Contracts\Proxy\ContentParser;
+use App\Support\UrlProxy;
 use fivefilters\Readability\Configuration;
 use fivefilters\Readability\Readability;
-use App\Support\UrlProxy;
 
 class GenericContentParser implements ContentParser
 {

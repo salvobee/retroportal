@@ -2,7 +2,7 @@
 
 namespace App\Services\Proxy;
 
-use App\Contracts\ContentParser;
+use App\Contracts\Proxy\ContentParser;
 use App\Services\Proxy\Parsers\GenericContentParser;
 
 class ParserResolver
