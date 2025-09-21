@@ -1,18 +1,6 @@
 <?php
 
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | News Sources Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Curated list of news sources organized by category and locale.
-    | Priority given to sources with RSS feeds for easier parsing.
-    | Sources selected for retro computing enthusiasts, tech, science,
-    | and general news from authoritative outlets.
-    |
-    */
-
     'sources' => [
         // Technology & Computing
         'technology' => [
@@ -48,18 +36,34 @@ return [
                 'language' => 'en',
                 'country' => 'US',
             ],
+            'slashdot' => [
+                'name' => 'Slashdot',
+                'description' => 'News for nerds, stuff that matters',
+                'url' => 'https://slashdot.org',
+                'rss_url' => 'http://rss.slashdot.org/Slashdot/slashdotMain',
+                'language' => 'en',
+                'country' => null,
+            ],
+            'punto_informatico' => [
+                'name' => 'Punto Informatico',
+                'description' => 'Tecnologia e innovazione in Italia',
+                'url' => 'https://www.punto-informatico.it',
+                'rss_url' => 'https://www.punto-informatico.it/feed/',
+                'language' => 'it',
+                'country' => 'IT',
+            ],
+            'indie_retro_news' => [
+                'name' => 'Indie Retro News',
+                'description' => 'Retro computing and indie gaming news',
+                'url' => 'https://www.indieretronews.com',
+                'rss_url' => 'https://www.indieretronews.com/feeds/posts/default',
+                'language' => 'en',
+                'country' => null,
+            ],
         ],
 
         // Science & Research
         'science' => [
-            'nature_news' => [
-                'name' => 'Nature News',
-                'description' => 'Latest scientific research and discoveries',
-                'url' => 'https://www.nature.com/news',
-                'rss_url' => 'https://www.nature.com/nature.rss',
-                'language' => 'en',
-                'country' => null,
-            ],
             'science_daily' => [
                 'name' => 'ScienceDaily',
                 'description' => 'Science news and research summaries',
@@ -116,11 +120,11 @@ return [
                 'language' => 'it',
                 'country' => 'IT',
             ],
-            'corriere' => [
-                'name' => 'Corriere della Sera',
+            'post' => [
+                'name' => 'Il Post',
                 'description' => 'Quotidiano nazionale italiano',
-                'url' => 'https://www.corriere.it',
-                'rss_url' => 'https://xml.corriereobjects.it/rss/homepage.xml',
+                'url' => 'https://www.ilpost.it',
+                'rss_url' => 'https://www.ilpost.it/feed',
                 'language' => 'it',
                 'country' => 'IT',
             ],
@@ -129,6 +133,22 @@ return [
                 'description' => 'Quotidiano nazionale italiano',
                 'url' => 'https://www.repubblica.it',
                 'rss_url' => 'https://www.repubblica.it/rss/homepage/rss2.0.xml',
+                'language' => 'it',
+                'country' => 'IT',
+            ],
+            'open' => [
+                'name' => 'Open',
+                'description' => 'Quotidiano online italiano',
+                'url' => 'https://www.open.online',
+                'rss_url' => 'https://www.open.online/feed',
+                'language' => 'it',
+                'country' => 'IT',
+            ],
+            'rai' => [
+                'name' => 'Rai News',
+                'description' => 'Servizio pubblico italiano',
+                'url' => 'https://www.rainews.it',
+                'rss_url' => 'https://www.rainews.it/rss',
                 'language' => 'it',
                 'country' => 'IT',
             ],
@@ -154,36 +174,122 @@ return [
             ],
         ],
 
-        // Retro Computing & Gaming
-        'retro_computing' => [
-            'vintage_computing' => [
-                'name' => 'Vintage Computing and Gaming',
-                'description' => 'Classic computers and retro gaming',
-                'url' => 'https://www.vintagecomputing.com',
-                'rss_url' => 'https://www.vintagecomputing.com/index.php/feed/',
+        // Music & Magazines
+        'music' => [
+            'rolling_stone_it' => [
+                'name' => 'Rolling Stone Italia',
+                'description' => 'Musica, cultura e spettacolo',
+                'url' => 'https://www.rollingstone.it',
+                'rss_url' => 'https://www.rollingstone.it/feed/',
+                'language' => 'it',
+                'country' => 'IT',
+            ],
+            'rolling_stone' => [
+                'name' => 'Rolling Stone',
+                'description' => 'International music and pop culture',
+                'url' => 'https://www.rollingstone.com',
+                'rss_url' => 'https://www.rollingstone.com/music/music-news/feed/',
+                'language' => 'en',
+                'country' => 'US',
+            ],
+            'pitchfork' => [
+                'name' => 'Pitchfork',
+                'description' => 'Music reviews, news and features',
+                'url' => 'https://pitchfork.com',
+                'rss_url' => 'https://pitchfork.com/rss/news/',
+                'language' => 'en',
+                'country' => 'US',
+            ],
+            'soundwall' => [
+                'name' => 'Soundwall',
+                'description' => 'Musica elettronica italiana',
+                'url' => 'https://www.soundwall.it',
+                'rss_url' => 'https://www.soundwall.it/feed/',
+                'language' => 'it',
+                'country' => 'IT',
+            ],
+            'sound_on_sound' => [
+                'name' => 'Sound on Sound',
+                'description' => 'Recording technology magazine',
+                'url' => 'https://www.soundonsound.com',
+                'rss_url' => 'https://www.soundonsound.com/rss/all',
+                'language' => 'en',
+                'country' => 'GB',
+            ],
+            'synthtopia' => [
+                'name' => 'Synthtopia',
+                'description' => 'Synthesizers and electronic music',
+                'url' => 'https://www.synthtopia.com',
+                'rss_url' => 'https://www.synthtopia.com/feed/',
                 'language' => 'en',
                 'country' => null,
             ],
-            'old_vintage_computing' => [
-                'name' => 'Old Vintage Computing Research',
-                'description' => 'Historical computing research',
-                'url' => 'http://oldvcr.blogspot.com',
-                'rss_url' => 'http://oldvcr.blogspot.com/feeds/posts/default',
+            'attack_mag' => [
+                'name' => 'Attack Magazine',
+                'description' => 'Electronic music production',
+                'url' => 'https://www.attackmagazine.com',
+                'rss_url' => 'https://www.attackmagazine.com/feed/',
+                'language' => 'en',
+                'country' => 'GB',
+            ],
+            'music_radar' => [
+                'name' => 'MusicRadar Tech',
+                'description' => 'Music tech and gear news',
+                'url' => 'https://www.musicradar.com',
+                'rss_url' => 'https://www.musicradar.com/rss',
+                'language' => 'en',
+                'country' => 'GB',
+            ],
+        ],
+
+        // Linux & Open Source
+        'linux_open_source' => [
+            'phoronix' => [
+                'name' => 'Phoronix',
+                'description' => 'Linux hardware and performance news',
+                'url' => 'https://www.phoronix.com',
+                'rss_url' => 'https://www.phoronix.com/rss.php',
                 'language' => 'en',
                 'country' => null,
+            ],
+            'linux_today' => [
+                'name' => 'Linux Today',
+                'description' => 'Linux news aggregator',
+                'url' => 'https://www.linuxtoday.com',
+                'rss_url' => 'https://www.linuxtoday.com/feed',
+                'language' => 'en',
+                'country' => null,
+            ],
+            'lffl' => [
+                'name' => 'LFFL Linux Freedom',
+                'description' => 'Linux news in Italian',
+                'url' => 'https://www.lffl.org',
+                'rss_url' => 'https://feeds.feedburner.com/linuxfreedom',
+                'language' => 'it',
+                'country' => 'IT',
+            ],
+        ],
+
+        // Web & Development
+        'web_dev' => [
+            'laravel_news' => [
+                'name' => 'Laravel News',
+                'description' => 'Laravel news and tutorials',
+                'url' => 'https://laravel-news.com',
+                'rss_url' => 'https://laravel-news.com/feed',
+                'language' => 'en',
+                'country' => null,
+            ],
+            'smashing_mag' => [
+                'name' => 'Smashing Magazine',
+                'description' => 'Web design and development',
+                'url' => 'https://www.smashingmagazine.com',
+                'rss_url' => 'https://www.smashingmagazine.com/feed/',
+                'language' => 'en',
+                'country' => 'DE',
             ],
         ],
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Category Mappings by Locale
-    |--------------------------------------------------------------------------
-    |
-    | Define which categories are available for each locale and their
-    | display names in the respective language.
-    |
-    */
 
     'categories' => [
         'en' => [
@@ -191,6 +297,9 @@ return [
             'science' => 'Science & Research',
             'general_international' => 'International News',
             'culture' => 'Culture & Arts',
+            'music' => 'Music & Magazines',
+            'linux_open_source' => 'Linux & Open Source',
+            'web_dev' => 'Web & Development',
             'retro_computing' => 'Retro Computing',
         ],
         'it' => [
@@ -199,19 +308,12 @@ return [
             'general_italy' => 'Notizie Italia',
             'general_international' => 'Notizie Internazionali',
             'culture' => 'Cultura e Arte',
+            'music' => 'Musica e Riviste',
+            'linux_open_source' => 'Linux e Open Source',
+            'web_dev' => 'Web e Sviluppo',
             'retro_computing' => 'Retro Computing',
         ],
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Locale-specific Source Filters
-    |--------------------------------------------------------------------------
-    |
-    | Define which sources should be shown for each locale.
-    | Sources can appear in multiple locales.
-    |
-    */
 
     'locale_sources' => [
         'en' => [
@@ -219,6 +321,9 @@ return [
             'science',
             'general_international',
             'culture',
+            'music',
+            'linux_open_source',
+            'web_dev',
             'retro_computing',
         ],
         'it' => [
@@ -227,6 +332,9 @@ return [
             'general_italy',
             'general_international',
             'culture',
+            'music',
+            'linux_open_source',
+            'web_dev',
             'retro_computing',
         ],
     ],
