@@ -35,8 +35,22 @@ class ChatbotController extends Controller
         $history[] = ['role' => 'user', 'content' => $userMsg];
 
         try {
+            $user = $request->user();
+            $userKey = null;
+            if ($user) {
+                $userKey = $user->apiKeys()
+                    ->where('type', 'openai')
+                    ->whereNotNull('key')
+                    ->value('key');
+            }
+
+            $options = [];
+            if ($userKey) {
+                $options['api_key'] = $userKey;
+            }
+
             // Prefer with-history to give the model minimal context
-            $reply = $chatbot->askWithHistory($history);
+            $reply = $chatbot->askWithHistory($history, $options);
 
             $history[] = ['role' => 'assistant', 'content' => $reply];
             $request->session()->put('chat_history', $history);

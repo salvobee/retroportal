@@ -32,7 +32,7 @@ class OpenAiChatbot implements ChatbotService
             'message' => trim($message),
         ]);
 
-        return Cache::remember($cacheKey, now()->addSeconds($cacheTtl), function () use ($message, $system) {
+        return Cache::remember($cacheKey, now()->addSeconds($cacheTtl), function () use ($options, $message, $system) {
             $payload = [
                 'model'    => $this->model(),
                 'messages' => [
@@ -41,7 +41,7 @@ class OpenAiChatbot implements ChatbotService
                 ],
             ];
 
-            return $this->dispatch($payload);
+            return $this->dispatch($payload, $options);
         });
     }
 
@@ -64,12 +64,12 @@ class OpenAiChatbot implements ChatbotService
                 'messages' => $normalized,
             ]);
 
-            return Cache::remember($cacheKey, now()->addSeconds((int)$cacheTtl), function () use ($payload) {
-                return $this->dispatch($payload);
+            return Cache::remember($cacheKey, now()->addSeconds((int)$cacheTtl), function () use ($options, $payload) {
+                return $this->dispatch($payload, $options);
             });
         }
 
-        return $this->dispatch($payload);
+        return $this->dispatch($payload, $options);
     }
 
     /**
@@ -103,11 +103,11 @@ class OpenAiChatbot implements ChatbotService
      *
      * Throws RuntimeException with a code that the controller maps to a localized message.
      */
-    protected function dispatch(array $payload): string
+    protected function dispatch(array $payload, array $options = []): string
     {
         try {
             $base_uri = config('services.openai.base_uri');
-            $key = (string)config('services.openai.key');
+            $key = $options['api_key'] ?? (string)config('services.openai.key');
             $resp = Http::withToken($key)
                 ->retry(1, 150)
                 ->post("$base_uri/chat/completions", $payload);
