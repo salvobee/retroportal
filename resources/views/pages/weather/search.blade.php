@@ -1,34 +1,31 @@
 @extends('layout.app')
 
-@section('title', __('weather.choose_city'))
-@section('page_title', __('weather.choose_city'))
+@section('title', __('weather.title'))
+@section('page_title', __('weather.title'))
 
 @section('content')
     <div align="center">
-        <p>@lang('weather.query'): <em>{{ $q }}</em></p>
-
-        @if(empty($results))
-            <p>@lang('weather.no_results')</p>
-        @else
-            <ul style="display:inline-block; text-align:left;">
-                @foreach($results as $c)
-                    @php
-                        $name = $c['name'] ?? 'Unknown';
-                        $state = $c['state'] ?? '';
-                        $country = $c['country'] ?? '';
-                    @endphp
+        @if(!empty($error))
+            <p style="color:#b00;"><strong>{{ $error }}</strong></p>
+        @elseif(count($results))
+            <p>{{ __('weather.results_for') }} <em>{{ $q }}</em></p>
+            <ul>
+                @foreach($results as $loc)
                     <li>
                         <a href="{{ route('features.weather.show', [
-                        'lat' => $c['lat'], 'lon' => $c['lon'],
-                        'name' => $name, 'state' => $state, 'country' => $country
-                    ]) }}">
-                            {{ $name }}@if($state), {{ $state }}@endif @if($country) ({{ $country }}) @endif
+                            'lat' => $loc['lat'],
+                            'lon' => $loc['lon'],
+                            'name' => $loc['name'] ?? '',
+                            'state' => $loc['state'] ?? '',
+                            'country' => $loc['country'] ?? '',
+                        ]) }}">
+                            {{ $loc['name'] }} ({{ $loc['state'] ?? '' }} {{ $loc['country'] ?? '' }})
                         </a>
                     </li>
                 @endforeach
             </ul>
+        @else
+            <p>{{ __('weather.search.no_results') }}</p>
         @endif
-
-        <p><a href="{{ route('features.weather.form') }}">⟵ @lang('weather.new_search')</a></p>
     </div>
 @endsection

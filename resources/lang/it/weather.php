@@ -23,4 +23,10 @@ return [
     'limit_reached' => 'Spiacenti! Il servizio meteo ha raggiunto il numero massimo di richieste consentite. Riprova più tardi.',
     'limit_hint' => 'Suggerimento: i risultati vengono messi in cache per ridurre il numero di chiamate.',
     'back_to_search' => 'Torna alla ricerca',
+    'results_for' => 'Risultati della ricerca per:',
+    'errors' => [
+        'missing_key'     => 'Errore di configurazione: chiave API mancante.',
+        'invalid_response'=> 'Errore nella risposta del servizio meteo.',
+        'generic'         => 'Si è verificato un errore imprevisto.',
+    ],
 ];

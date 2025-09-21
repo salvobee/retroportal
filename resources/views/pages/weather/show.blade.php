@@ -5,8 +5,8 @@
 
 @section('content')
     @php
-        $p = $place;
-        $w = $data['weather'][0] ?? null;
+        $p    = $place;
+        $w    = $data['weather'][0] ?? null;
         $main = $data['main'] ?? [];
         $wind = $data['wind'] ?? [];
     @endphp
@@ -19,7 +19,9 @@
             @if($p['country']) – {{ $p['country'] }} @endif
         </p>
 
-        @if(!$w)
+        @if(!empty($error))
+            <p style="color:#b00;"><strong>{{ $error }}</strong></p>
+        @elseif(!$w)
             <p>@lang('weather.unavailable')</p>
         @else
             <table border="0" cellspacing="0" cellpadding="4">

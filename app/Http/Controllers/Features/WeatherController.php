@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Features;
 
+use App\Exceptions\Weather\MissingApiKeyException;
 use App\Http\Controllers\Controller;
+use App\Services\Weather\InvalidApiResponseException;
 use App\Services\Weather\OpenWeatherService;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class WeatherController extends Controller
     public function form(Request $request)
     {
         return view('pages.weather.form', [
-            'city' => (string) $request->query('city', ''),
+            'city'  => (string) $request->query('city', ''),
+            'error' => null,
         ]);
     }
 
@@ -23,17 +26,20 @@ class WeatherController extends Controller
     {
         $request->validate(['q' => 'required|string|min:2|max:120']);
         $q = $request->string('q');
+        $results = [];
+        $error = null;
 
         try {
             $results = $this->owm->searchCities($q, 10);
+        } catch (MissingApiKeyException $e) {
+            $error = __('weather.errors.missing_key');
+        } catch (InvalidApiResponseException $e) {
+            $error = __('weather.errors.invalid_response');
         } catch (\Throwable $e) {
-            $results = [];
+            $error = __('weather.errors.generic');
         }
 
-        return view('pages.weather.search', [
-            'q'       => $q,
-            'results' => $results,
-        ]);
+        return view('pages.weather.search', compact('q', 'results', 'error'));
     }
 
     /** Step 3: mostra meteo per coords scelte */
@@ -47,16 +53,25 @@ class WeatherController extends Controller
             'country' => 'nullable|string|max:2',
         ]);
 
+        $error = null;
+        $data = [];
+
         try {
             $data = $this->owm->currentByCoords(
                 (float) $request->lat,
                 (float) $request->lon
             );
+        } catch (MissingApiKeyException $e) {
+            $error = __('weather.errors.missing_key');
+        } catch (InvalidApiResponseException $e) {
+            $error = __('weather.errors.invalid_response');
         } catch (\RuntimeException $e) {
             if ($e->getMessage() === 'OWM_RATE_LIMIT') {
-                return response()->view('features.weather.limited', [], 429);
+                return response()->view('pages.weather.limited', [], 429);
             }
-            throw $e;
+            $error = __('weather.errors.generic');
+        } catch (\Throwable $e) {
+            $error = __('weather.errors.generic');
         }
 
         return view('pages.weather.show', [
@@ -65,7 +80,8 @@ class WeatherController extends Controller
                 'state'   => $request->string('state')->toString(),
                 'country' => $request->string('country')->toString(),
             ],
-            'data' => $data,
+            'data'  => $data,
+            'error' => $error,
         ]);
     }
 }

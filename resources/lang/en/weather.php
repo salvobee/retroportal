@@ -22,4 +22,9 @@ return [
     'limit_reached' => 'Sorry! The weather service has reached the maximum number of requests. Please try again later.',
     'limit_hint' => 'Tip: results are cached to reduce API calls.',
     'back_to_search' => 'Back to search',
+    'errors' => [
+        'missing_key'     => 'Configuration error: API key is missing.',
+        'invalid_response'=> 'Invalid response from weather service.',
+        'generic'         => 'An unexpected error occurred.',
+    ],
 ];
