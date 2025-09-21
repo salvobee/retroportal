@@ -50,6 +50,7 @@ class ProxyController extends Controller
         return view('pages.proxy', [
             'page_title' => $pageTitle,
             'origin_url' => $url,
+            'origin_host'=> parse_url($url, PHP_URL_HOST),
             'error'      => $error,
             'body_html'  => $bodyHtml,
         ]);

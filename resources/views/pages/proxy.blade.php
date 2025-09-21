@@ -10,12 +10,19 @@
                 <small class="muted">
                     <strong>{{ __('ui.site_name') }}</strong> — Reader Proxy
                     &nbsp;|&nbsp;
-                    <a href="{{ $origin_url }}" target="_blank">Open original</a>
-                    &nbsp;|&nbsp;
-                    <a href="{{ url('/') }}">Home</a>
+                    <a href="{{ $origin_url }}" target="_blank">{{ __('proxy.open_original') }}</a>
                 </small>
             </td>
         </tr>
+        @if(!empty($origin_host))
+            <tr>
+                <td>
+                    <small class="muted">
+                        {{ __('proxy.source') }}: <strong>{{ $origin_host }}</strong>
+                    </small>
+                </td>
+            </tr>
+        @endif
     </table>
 
     <hr noshade size="1">
