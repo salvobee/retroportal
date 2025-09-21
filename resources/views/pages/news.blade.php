@@ -13,12 +13,17 @@
                     <td width="5">•</td>
                     <td>
                         <x-external-link url="{{ $item['url'] }}">{{ $item['title'] }}</x-external-link>
+
                         @if($item['source'])
                             <br><small class="muted">{{ __('news.source') }}: {{ $item['source'] }}</small>
                         @endif
+
                         @if($item['published_at'])
                             <br><small class="muted">
-                                {{ __('news.published_at') }}: {{ date('Y-m-d H:i', $item['published_at']) }}
+                                {{ __('news.published_at') }}:
+                                {{ \Carbon\Carbon::createFromTimestamp($item['published_at'])
+                                    ->locale(app()->getLocale())
+                                    ->translatedFormat('d F Y, H:i') }}
                             </small>
                         @endif
                     </td>
