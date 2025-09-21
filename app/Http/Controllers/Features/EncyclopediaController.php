@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Features;
 
-use App\Contracts\WikipediaService;
+use App\Contracts\Research\EncyclopediaService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class WikipediaController extends Controller
+class EncyclopediaController extends Controller
 {
-    public function __invoke(Request $request, WikipediaService $wikipedia): View
+    public function __invoke(Request $request, EncyclopediaService $wikipedia): View
     {
         $q = (string) $request->query('q', '');
         $locale = app()->getLocale() ?? 'en';

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Wikipedia;
+namespace App\Services\Research;
 
-use App\Contracts\WikipediaService;
+use App\Contracts\Research\EncyclopediaService;
 use Illuminate\Support\Facades\Http;
 
-class WikipediaApiService implements WikipediaService
+class WikipediaApiService implements EncyclopediaService
 {
     public function search(string $query, string $locale = 'en', int $limit = 10): array
     {

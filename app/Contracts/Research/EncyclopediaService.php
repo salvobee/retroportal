@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Contracts;
+namespace App\Contracts\Research;
 
-interface WikipediaService
+interface EncyclopediaService
 {
     /**
      * Search Wikipedia entries for a given query and locale.

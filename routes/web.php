@@ -9,7 +9,7 @@ use App\Http\Controllers\Settings\LanguageController;
 use App\Http\Controllers\Features\WebSearchController;
 use App\Http\Controllers\Features\NewsController;
 use App\Http\Controllers\Features\WeatherController;
-use App\Http\Controllers\Features\WikipediaController;
+use App\Http\Controllers\Features\EncyclopediaController;
 
 // Settings
 Route::get('/theme/{mode}', [ThemeController::class, 'set'])
@@ -29,7 +29,7 @@ Route::get('/search',       WebSearchController::class)
     ->name('features.search');
 Route::get('/news',         NewsController::class)
     ->name('features.news');
-Route::get('/wikipedia',    WikipediaController::class)
+Route::get('/wikipedia',    EncyclopediaController::class)
     ->name('features.wikipedia');
 
 Route::prefix('weather')->name('features.weather.')->group(function () {

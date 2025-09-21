@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class WikipediaServiceProvider extends ServiceProvider
+class EncyclopediaServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -12,8 +12,8 @@ class WikipediaServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \App\Contracts\WikipediaService::class,
-            \App\Services\Wikipedia\WikipediaApiService::class
+            \App\Contracts\Research\EncyclopediaService::class,
+            \App\Services\Research\WikipediaApiService::class
         );
     }
 

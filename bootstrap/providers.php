@@ -6,5 +6,5 @@ return [
     App\Providers\NewsServiceProvider::class,
     App\Providers\ProxyServiceProvider::class,
     App\Providers\WebSearchServiceProvider::class,
-    App\Providers\WikipediaServiceProvider::class,
+    App\Providers\EncyclopediaServiceProvider::class,
 ];
