@@ -83,7 +83,7 @@
     <div class="nav" id="navigation">
         <strong>Menu:</strong>
         <a href="{{ route('features.search') }}">{{ __('web-search.title') }}</a> |
-        <a href="{{ route('features.news') }}">{{ __('news.title') }}</a> |
+        <a href="{{ route('features.news.index') }}">{{ __('news.title') }}</a> |
         <a href="{{ route('features.weather.form') }}">{{ __('weather.title') }}</a> |
         <a href="{{ route('features.wikipedia') }}">{{ __('encyclopedia.title') }}</a> |
         <a href="{{ route('chatbot.index') }}">{{ __('ai.title') }}</a>
