@@ -8,6 +8,7 @@ return [
 
     'pages' => [
         'home' => 'Benvenuto',
+        'profile' => 'Profilo',
     ],
 
     'lang' => [
