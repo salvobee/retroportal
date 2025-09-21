@@ -7,31 +7,51 @@ use App\Services\Proxy\ReaderProxyService;
 use App\Support\DomainAllowList;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Client\ConnectionException;
 
 class ProxyController extends Controller
 {
     public function __invoke(Request $request, ReaderProxyService $reader, DomainAllowList $allowList): View
     {
-        // Read target URL from query string
         $url = (string) $request->query('url', '');
+        $error = null;
+        $pageTitle = 'Document';
+        $bodyHtml = '<p>Empty.</p>';
 
         if (!$allowList->isAllowedUrl($url)) {
-            // Render minimal error page dentro il layout legacy
             return view('pages.proxy', [
-                'page_title' => 'Not allowed',
+                'page_title' => __('Error'),
                 'origin_url' => $url,
-                'body_html'  => '<p>Domain not allowed. Only Wikipedia is supported at the moment.</p>',
+                'error'      => __('proxy.not_allowed'),
+                'body_html'  => null,
             ]);
         }
 
-        // Fetch simplified content
-        $doc = $reader->fetchSimplified($url);
+        try {
+            $doc = $reader->fetchSimplified($url);
+            $pageTitle = $doc['title'] ?? $pageTitle;
+            $bodyHtml  = $doc['body'] ?? $bodyHtml;
+        } catch (ConnectionException $e) {
+            $pageTitle = __('Error');
+            $error = __('proxy.connection_error');
+            if (config('app.debug')) {
+                $error .= "\n" . $e->getMessage();
+            }
+            $bodyHtml = null;
+        } catch (\Throwable $e) {
+            $pageTitle = __('Error');
+            $error = __('proxy.generic_error');
+            if (config('app.debug')) {
+                $error .= "\n" . $e->getMessage();
+            }
+            $bodyHtml = null;
+        }
 
-        // Render inside our legacy-friendly wrapper with header
         return view('pages.proxy', [
-            'page_title' => $doc['title'] ?? 'Document',
+            'page_title' => $pageTitle,
             'origin_url' => $url,
-            'body_html'  => $doc['body'] ?? '<p>Empty.</p>',
+            'error'      => $error,
+            'body_html'  => $bodyHtml,
         ]);
     }
 }

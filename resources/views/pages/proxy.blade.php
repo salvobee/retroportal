@@ -4,7 +4,6 @@
 @section('page_title', $page_title)
 
 @section('content')
-    {{-- Minimal sticky-ish header using table (no CSS tricks) --}}
     <table width="100%" border="0" cellspacing="0" cellpadding="4">
         <tr bgcolor="{{ $theme_palette['bg'] }}">
             <td>
@@ -21,8 +20,14 @@
 
     <hr noshade size="1">
 
+    {{-- Error block --}}
+    @if(!empty($error))
+        <p style="color:#b00; white-space: pre-line;"><strong>{{ $error }}</strong></p>
+        <hr noshade size="1">
+    @endif
+
     {{-- Proxied and simplified content --}}
-    <div>
-        {!! $body_html !!}
-    </div>
+    @if(!empty($body_html))
+        <div>{!! $body_html !!}</div>
+    @endif
 @endsection
