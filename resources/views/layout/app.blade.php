@@ -85,7 +85,8 @@
         <a href="{{ route('features.search') }}">{{ __('ui.menu.search') }}</a> |
         <a href="{{ route('features.news') }}">{{ __('ui.menu.news') }}</a> |
         <a href="{{ route('features.weather.form') }}">{{ __('ui.menu.weather') }}</a> |
-        <a href="{{ route('features.wikipedia') }}">{{ __('ui.menu.wikipedia') }}</a>
+        <a href="{{ route('features.wikipedia') }}">{{ __('ui.menu.wikipedia') }}</a> |
+        <a href="{{ route('chatbot.index') }}">{{ __('ui.menu.chatbot') }}</a>
     </div>
     <hr noshade size="1">
 

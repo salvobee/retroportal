@@ -42,4 +42,10 @@ return [
         'base'  => 'https://api.openweathermap.org',
     ],
 
+    'openai' => [
+        'key' => env('OPENAI_KEY'),
+        'model' => env('OPENAI_MODEL', 'gpt-5'),
+        'base_uri' => env('OPENAI_BASE', 'https://api.openai.com/v1'),
+    ]
+
 ];

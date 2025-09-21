@@ -12,6 +12,7 @@ return [
         'wikipedia'=> 'Wikipedia',
         'sitemap'  => 'Sitemap',
         'textonly' => 'Text-only',
+        'chatbot' => 'AI Chatbot',
     ],
     'pages' => [
         'home'      => 'Welcome',

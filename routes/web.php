@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Features\ChatbotController;
 use App\Http\Controllers\Features\ImageProxyController;
 use App\Http\Controllers\Features\ProxyController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,10 @@ Route::prefix('weather')->name('features.weather.')->group(function () {
     Route::get('/search', [WeatherController::class, 'search'])->name('search')->middleware('throttle:weather');
     Route::get('/show', [WeatherController::class, 'show'])->name('show')->middleware('throttle:weather');
 });
+
+Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
+Route::post('/chatbot', [ChatbotController::class, 'send'])->name('chatbot.send');
+Route::post('/chatbot/clear', [ChatbotController::class, 'clear'])->name('chatbot.clear');
 
 // Retro Proxy
 Route::get('/proxy', ProxyController::class)
