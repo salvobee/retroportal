@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Contracts\ChatbotService;
-use App\Services\AI\ChatbotMock;
+use App\Contracts\AI\ChatbotService;
 use App\Services\AI\OpenAiChatbot;
 use Illuminate\Support\ServiceProvider;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\AI;
 
-use App\Contracts\ChatbotService;
+use App\Contracts\AI\ChatbotService;
 use RuntimeException;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Features;
 
-use App\Contracts\ChatbotService;
+use App\Contracts\AI\ChatbotService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
