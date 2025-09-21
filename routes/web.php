@@ -27,8 +27,11 @@ Route::view('/','pages.home')
 // Retro Portal Features
 Route::get('/search',       WebSearchController::class)
     ->name('features.search');
-Route::get('/news',         NewsController::class)
-    ->name('features.news');
+// News routes
+Route::prefix('news')->name('features.news.')->group(function () {
+    Route::get('/', [NewsController::class, 'index'])->name('index');
+    Route::get('/source/{sourceId}', [NewsController::class, 'source'])->name('source');
+});
 Route::get('/wikipedia',    EncyclopediaController::class)
     ->name('features.wikipedia');
 
