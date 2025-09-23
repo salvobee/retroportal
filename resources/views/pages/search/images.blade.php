@@ -7,13 +7,12 @@
     @php
         $q         = (string) ($q ?? '');
         $drawings  = (bool)   ($drawings ?? false);
-        $safe      = in_array(($safe ?? 'active'), ['off','active'], true) ? $safe : 'active';
         $start     = max(1, (int) ($start ?? 1));
         $num       = max(1, min(10, (int) ($num ?? 10)));
         $results   = $results ?? null;
         $error     = $error ?? null;
 
-        $baseQs = ['q'=>$q, 'safe'=>$safe, 'num'=>$num];
+        $baseQs = ['q'=>$q, 'num'=>$num];
         if ($drawings) { $baseQs['drawings'] = 1; }
 
         $prevUrl = null;
@@ -56,19 +55,11 @@
                                 <td><input type="submit" value="{{ $label_submit }}"></td>
                             </tr>
                             <tr>
-                                <td>&nbsp;</td>
-                                <td colspan="2">
+                                <td colspan="3" align="center">
                                     <label>
                                         <input type="checkbox" name="drawings" value="1" {{ $drawings ? 'checked' : '' }}>
                                         {{ $label_draw }}
                                     </label>
-
-                                    &nbsp;&nbsp;
-                                    <label for="safe"><strong>{{ $label_safe }}:</strong></label>
-                                    <select id="safe" name="safe">
-                                        <option value="active" {{ $safe === 'active' ? 'selected' : '' }}>{{ $label_on }}</option>
-                                        <option value="off"    {{ $safe === 'off'    ? 'selected' : '' }}>{{ $label_off }}</option>
-                                    </select>
 
                                     <input type="hidden" name="start" value="1">
                                     <input type="hidden" name="num" value="{{ $num }}">

@@ -13,7 +13,6 @@ class ImageSearchController extends Controller
     {
         $q           = (string) $request->query('q', '');
         $onlyDraw    = (bool) $request->boolean('drawings', false); // ?drawings=1 => lineart
-        $safe        = $request->query('safe', 'active');           // 'off' | 'active'
         $start       = (int) $request->integer('start', 1);
         $num         = (int) $request->integer('num', 10);
 
@@ -25,7 +24,7 @@ class ImageSearchController extends Controller
                 $results = $search->searchImages($q, [
                     'start'   => $start,
                     'num'     => $num,
-                    'safe'    => in_array($safe, ['off','active'], true) ? $safe : 'active',
+                    'safe'    => 'active',
                     'imgType' => $onlyDraw ? 'lineart' : null,
                 ]);
             } catch (\Throwable $e) {
@@ -38,7 +37,6 @@ class ImageSearchController extends Controller
             'page_title' => 'Image Search',
             'q'          => $q,
             'drawings'   => $onlyDraw,
-            'safe'       => $safe,
             'start'      => $start,
             'num'        => $num,
             'results'    => $results, // {type:'image', items:[...], total, next_start}
