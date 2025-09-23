@@ -12,6 +12,7 @@ use App\Http\Controllers\Settings\ThemeController;
 use App\Http\Controllers\User\ApiKeyController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Middleware\ChatbotDailyLimit;
+use App\Http\Middleware\WeatherDailyLimit;
 use Illuminate\Support\Facades\Route;
 
 // Settings
@@ -50,8 +51,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Meteo (solo utenti loggati e verificati)
 Route::prefix('weather')->name('features.weather.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [WeatherController::class, 'form'])->name('form');
-    Route::get('/search', [WeatherController::class, 'search'])->name('search')->middleware('throttle:weather');
-    Route::get('/show', [WeatherController::class, 'show'])->name('show')->middleware('throttle:weather');
+    Route::get('/search', [WeatherController::class, 'search'])
+        ->name('search')
+        ->middleware(['throttle:weather', WeatherDailyLimit::class]);
+    Route::get('/show', [WeatherController::class, 'show'])
+        ->name('show')
+        ->middleware(['throttle:weather', WeatherDailyLimit::class]);
 });
 
 // Retro Proxy
