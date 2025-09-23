@@ -7,6 +7,7 @@ return [
     'hint_search' => 'Tip: type a city (e.g., "Rome", "London, UK").',
     'choose_city' => 'Choose a city',
     'query' => 'Query',
+    'results_for' => 'Results for:',
     'no_results' => 'No results. Try adding state or country (e.g., "Paris, FR").',
     'new_search' => 'New search',
     'location' => 'Location',
@@ -21,6 +22,7 @@ return [
     'limit_page_title' => 'Request limit reached',
     'limit_reached' => 'Sorry! The weather service has reached the maximum number of requests. Please try again later.',
     'limit_hint' => 'Tip: results are cached to reduce API calls.',
+    'limit_suggestion' => 'Add your Open Weather Map API Key in the <a href=":url">profile settings</a> section to continue using the service limitless.',
     'back_to_search' => 'Back to search',
     'errors' => [
         'missing_key'     => 'Configuration error: API key is missing.',

@@ -22,6 +22,7 @@ return [
     'limit_page_title' => 'Limite richieste raggiunto',
     'limit_reached' => 'Spiacenti! Il servizio meteo ha raggiunto il numero massimo di richieste consentite. Riprova più tardi.',
     'limit_hint' => 'Suggerimento: i risultati vengono messi in cache per ridurre il numero di chiamate.',
+    'limit_suggestion' => 'Aggiungi la tua chiave API personale dalle <a href=":url">impostazioni profilo</a> per evitare questo limite.',
     'back_to_search' => 'Torna alla ricerca',
     'results_for' => 'Risultati della ricerca per:',
     'errors' => [

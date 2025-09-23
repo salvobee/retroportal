@@ -25,7 +25,9 @@
                 @endforeach
             </ul>
         @else
-            <p>{{ __('weather.search.no_results') }}</p>
+            <p>{{ __('weather.no_results') }}</p>
         @endif
+
+        <p><a href="{{ route('features.weather.form') }}">⟵ @lang('weather.search_another')</a></p>
     </div>
 @endsection

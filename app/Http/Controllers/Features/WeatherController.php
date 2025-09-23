@@ -29,8 +29,10 @@ class WeatherController extends Controller
         $results = [];
         $error = null;
 
+        $userKey = $this->resolveUserApiKey($request);
+
         try {
-            $results = $this->owm->searchCities($q, 10);
+            $results = $this->owm->searchCities($q, 10, $userKey);
         } catch (MissingApiKeyException $e) {
             $error = __('weather.errors.missing_key');
         } catch (InvalidApiResponseException $e) {
@@ -56,10 +58,13 @@ class WeatherController extends Controller
         $error = null;
         $data = [];
 
+        $userKey = $this->resolveUserApiKey($request);
+
         try {
             $data = $this->owm->currentByCoords(
                 (float) $request->lat,
-                (float) $request->lon
+                (float) $request->lon,
+                $userKey
             );
         } catch (MissingApiKeyException $e) {
             $error = __('weather.errors.missing_key');
@@ -83,5 +88,27 @@ class WeatherController extends Controller
             'data'  => $data,
             'error' => $error,
         ]);
+    }
+
+    private function resolveUserApiKey(Request $request): ?string
+    {
+        $user = $request->user();
+
+        if (!$user) {
+            return null;
+        }
+
+        $value = $user->apiKeys()
+            ->where('type', 'openweathermap')
+            ->whereNotNull('key')
+            ->value('key');
+
+        if ($value === null) {
+            return null;
+        }
+
+        $trimmed = trim((string) $value);
+
+        return $trimmed === '' ? null : $trimmed;
     }
 }

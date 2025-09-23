@@ -13,18 +13,15 @@
 
     <style type="text/css">
         /* <![CDATA[ */
-        /* BASE: compatibile con historical browsers */
         body { margin: 8px; font-family: Arial, Helvetica, sans-serif; }
         .site-name { font-weight: bold; }
         .muted { font-size: 90%; color: {{ $theme_palette['muted'] }}; }
         hr { border: 0; height: 1px; background: {{ $theme_palette['border'] }}; }
         .nav { margin: 6px 0; }
         .nav a { text-decoration: none; }
-        .theme, .lang { font-size: 90%; }
-        /* BASE: aggiungi padding laterale minimo anche sui legacy */
+        .theme, .lang, .auth { font-size: 90%; margin-top: 4px; }
         .wrap { margin: 0; padding: 0 6px; }
 
-        /* moderni: centratura + un po' più di aria */
         @media screen and (min-width: 640px) {
             .wrap { max-width: 72ch; margin: 0 auto; padding: 0 12px; }
         }
@@ -42,8 +39,6 @@
       alink="{{ $theme_palette['alink'] }}">
 
 <basefont face="Arial, Helvetica, sans-serif" size="3">
-
-{{--<a href="#content" accesskey="0">Skip to content</a>--}}
 
 <div class="wrap">
 
@@ -73,6 +68,21 @@
                         <a href="{{ route('settings.lang', ['locale' => 'en']) }}">EN</a> |
                         <a href="{{ route('settings.lang', ['locale' => 'it']) }}">IT</a>
                     </small>
+                </div>
+                <div class="auth">
+                    @guest
+                        <a href="{{ route('login') }}">{{ __('auth.login') }}</a> /
+                        <a href="{{ route('register') }}">{{ __('auth.register') }}</a>
+                    @else
+                        <a href="{{ route('dashboard.profile') }}">{{ Auth::user()->name }}</a>
+                        /
+                        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                            @csrf
+                            <button type="submit" style="background:none; border:0; padding:0; margin:0; cursor:pointer; font:inherit; color:inherit; text-decoration:underline;">
+                                {{ __('auth.logout') }}
+                            </button>
+                        </form>
+                    @endguest
                 </div>
             </td>
         </tr>

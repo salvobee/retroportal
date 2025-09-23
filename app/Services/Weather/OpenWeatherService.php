@@ -23,11 +23,15 @@ class OpenWeatherService
         $this->units = $cfg['units'] ?? 'metric';
     }
 
-    protected function ensureKey(): void
+    protected function resolveKey(?string $override = null): string
     {
-        if (empty($this->key)) {
+        $key = trim((string) ($override ?: $this->key));
+
+        if ($key === '') {
             throw new MissingApiKeyException('OpenWeather API key is missing');
         }
+
+        return $key;
     }
 
     protected function http()
@@ -43,16 +47,16 @@ class OpenWeatherService
     }
 
     /** Step intermedio: ricerca città (geocoding) */
-    public function searchCities(string $q, int $limit = 10): array
+    public function searchCities(string $q, int $limit = 10, ?string $apiKey = null): array
     {
-        $this->ensureKey();
+        $resolvedKey = $this->resolveKey($apiKey);
 
         $key = "owm:geocode:" . md5(strtolower(trim($q))) . ":$limit";
-        return Cache::remember($key, now()->addDays(30), function () use ($q, $limit) {
+        return Cache::remember($key, now()->addDays(30), function () use ($q, $limit, $resolvedKey) {
             $resp = $this->http()->get($this->base . '/geo/1.0/direct', [
                 'q'     => $q,
                 'limit' => $limit,
-                'appid' => $this->key,
+                'appid' => $resolvedKey,
             ]);
 
             $data = $resp->json();
@@ -65,17 +69,17 @@ class OpenWeatherService
     }
 
     /** Meteo corrente per coordinate */
-    public function currentByCoords(float $lat, float $lon): array
+    public function currentByCoords(float $lat, float $lon, ?string $apiKey = null): array
     {
-        $this->ensureKey();
+        $resolvedKey = $this->resolveKey($apiKey);
 
         $key = sprintf("owm:current:%.3f:%.3f:%s:%s", $lat, $lon, $this->lang, $this->units);
 
-        return Cache::remember($key, now()->addMinutes(5), function () use ($lat, $lon) {
+        return Cache::remember($key, now()->addMinutes(5), function () use ($lat, $lon, $resolvedKey) {
             $resp = $this->http()->get($this->base . '/data/2.5/weather', [
                 'lat'   => $lat,
                 'lon'   => $lon,
-                'appid' => $this->key,
+                'appid' => $resolvedKey,
                 'lang'  => $this->lang,
                 'units' => $this->units,
             ]);
