@@ -40,6 +40,7 @@ return [
         'lang'  => env('OPENWEATHER_LANG', 'en'),
         'units' => env('OPENWEATHER_UNITS', 'metric'),
         'base'  => 'https://api.openweathermap.org',
+        'system_daily_limit' => env('OPENWEATHER_SYSTEM_DAILY_LIMIT', 10),
     ],
 
     'openai' => [
