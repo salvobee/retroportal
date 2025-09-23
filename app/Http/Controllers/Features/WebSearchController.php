@@ -51,7 +51,7 @@ class WebSearchController extends Controller
             }
         }
 
-        return view('pages.search', [
+        return view('pages.search.web', [
             'page_title' => 'Web Search',
             'q'          => $q,
             'start'      => $start,

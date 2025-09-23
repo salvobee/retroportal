@@ -34,7 +34,7 @@ class ImageSearchController extends Controller
             }
         }
 
-        return view('pages.search_images', [
+        return view('pages.search.images', [
             'page_title' => 'Image Search',
             'q'          => $q,
             'drawings'   => $onlyDraw,
