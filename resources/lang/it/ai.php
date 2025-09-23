@@ -12,12 +12,13 @@ return [
     'start_hint'   => 'Inizia la conversazione scrivendo un messaggio qui sopra.',
     'clear'        => 'Cancella conversazione',
     'limit_title'   => 'Utilizzo del Chatbot Limitato',
+    'back_to_conversation' => 'Ritorna alla conversazione',
 
     // Errori runtime (mostrati all’utente)
     'error' => [
         'limit_title'       => 'Limite giornaliero raggiunto',
         'limit_message'     => 'Hai già usato la tua richiesta gratuita per oggi.',
-        'limit_suggestion'  => 'Aggiungi la tua chiave API personale per continuare a usare il chatbot senza limiti.',
+        'limit_suggestion'  => 'Aggiungi la tua chiave API personale dalle <a href=":url">impostazioni profilo</a> per continuare a usare il chatbot senza limiti.',
         'bad_request'        => 'La tua richiesta non può essere elaborata. Controlla i dati e riprova.',
         'unauthorized'       => 'Il servizio AI ha rifiutato la richiesta (non autorizzata). Verifica le credenziali.',
         'forbidden'          => 'Accesso al servizio AI negato.',

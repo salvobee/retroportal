@@ -8,8 +8,8 @@
         <p style="color:#b00;">
             {{ __('ai.error.limit_message') }}
         </p>
-        <p>
-            {{ __('ai.error.limit_suggestion') }}
-        </p>
+        <p class="muted">{!! __('ai.error.limit_suggestion', ['url' => route('dashboard.profile')]) !!}</p>
+
+        <p><a href="{{ route('chatbot.index') }}">⟵ @lang('ai.back_to_conversation')</a></p>
     </div>
 @endsection
