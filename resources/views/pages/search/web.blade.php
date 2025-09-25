@@ -1,7 +1,12 @@
 @extends('layout.app')
 
 @section('title', __('web-search.title'))
-@section('page_title', __('web-search.page_title'))
+@section('page_title')
+    {{ __('web-search.page_title') }} <br/>
+    <font size="-2">
+        {{ __('web-search.powered_by') }}
+    </font>
+@endsection
 
 @section('content')
     @php
@@ -113,17 +118,17 @@
                     <tr>
                         <td>
                             @if($prevUrl)
-                                <a href="{{ $prevUrl }}">&laquo; {{ $label_prev }}</a>
+                                <a href="{{ $prevUrl }}">{!! $label_prev !!}</a>
                             @else
-                                <span class="muted">&laquo; {{ $label_prev }}</span>
+                                <span class="muted">{!! $label_prev !!}</span>
                             @endif
                         </td>
                         <td width="10">&nbsp;</td>
                         <td>
                             @if($nextUrl)
-                                <a href="{{ $nextUrl }}">{{ $label_next }} &raquo;</a>
+                                <a href="{{ $nextUrl }}">{!! $label_next  !!}</a>
                             @else
-                                <span class="muted">{{ $label_next }} &raquo;</span>
+                                <span class="muted">{!! $label_next  !!}</span>
                             @endif
                         </td>
                     </tr>

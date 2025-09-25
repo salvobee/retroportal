@@ -3,6 +3,7 @@
 return [
     'title'      => 'Ricerca Web',
     'page_title' => 'Ricerca Web',
+    'powered_by' => 'Risultati forniti da Google',
 
     'form' => [
         'query'  => 'Query',

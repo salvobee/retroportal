@@ -3,6 +3,7 @@
 return [
     'title'      => 'Web Search',
     'page_title' => 'Web Search',
+    'powered_by' => 'Powered by Google',
 
     'form' => [
         'query'  => 'Query',
