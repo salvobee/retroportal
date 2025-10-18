@@ -11,9 +11,14 @@ return [
     'ai'           => 'AI',
     'start_hint'   => 'Start the conversation by typing a message above.',
     'clear'        => 'Clear conversation',
+    'limit_title'   => 'Chatbot Usage is Limited',
+    'back_to_conversation' => 'Back to conversation',
 
     // Runtime error messages (user-facing)
     'error' => [
+        'limit_title'       => 'Daily Limit Reached',
+        'limit_message'     => 'You already used your daily request.',
+        'limit_suggestion'  => 'Add your OpenAI API Key in the <a href=":url">profile settings</a> section to continue using the Chatbot limitless.',
         'bad_request'        => 'Your request could not be processed. Please review your input and try again.',
         'unauthorized'       => 'The AI service refused the request (unauthorized). Please check credentials.',
         'forbidden'          => 'Access to the AI service was denied.',
