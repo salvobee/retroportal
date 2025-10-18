@@ -3,6 +3,12 @@
 use App\Http\Controllers\Features\ChatbotController;
 use App\Http\Controllers\Features\EncyclopediaController;
 use App\Http\Controllers\Features\ImageProxyController;
+use App\Http\Controllers\Features\ImageSearchController;
+use App\Http\Controllers\Features\ProxyController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Settings\ThemeController;
+use App\Http\Controllers\Settings\LanguageController;
+use App\Http\Controllers\Features\WebSearchController;
 use App\Http\Controllers\Features\NewsController;
 use App\Http\Controllers\Features\ProxyController;
 use App\Http\Controllers\Features\WeatherController;
@@ -31,6 +37,9 @@ Route::view('/','pages.home')
 // Retro Portal Features
 Route::get('/search',       WebSearchController::class)
     ->name('features.search');
+Route::get('/features/image-search', ImageSearchController::class)
+    ->name('features.image-search');
+
 // News routes
 Route::prefix('news')->name('features.news.')->group(function () {
     Route::get('/', [NewsController::class, 'index'])->name('index');

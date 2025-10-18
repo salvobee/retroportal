@@ -47,6 +47,11 @@ return [
         'key' => env('OPENAI_KEY'),
         'model' => env('OPENAI_MODEL', 'gpt-5'),
         'base_uri' => env('OPENAI_BASE', 'https://api.openai.com/v1'),
-    ]
+    ],
 
+    'google_cse' => [
+        'key'    => env('GOOGLE_CSE_API_KEY'),
+        'cx_web' => env('GOOGLE_CSE_CX_WEB'),
+        'cx_img' => env('GOOGLE_CSE_CX_IMG'), // opzionale
+    ],
 ];
