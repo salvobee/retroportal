@@ -58,10 +58,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::prefix('weather')->name('features.weather.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [WeatherController::class, 'form'])->name('form');
     Route::get('/search', [WeatherController::class, 'search'])
-        ->name('features.weather.search')
+        ->name('search')
         ->middleware(['throttle:weather', WeatherDailyLimit::class]);
     Route::get('/show', [WeatherController::class, 'show'])
-        ->name('features.weather.show')
+        ->name('show')
         ->middleware(['throttle:weather', WeatherDailyLimit::class]);
 });
 
