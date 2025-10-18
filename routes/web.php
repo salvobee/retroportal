@@ -31,9 +31,11 @@ Route::view('/','pages.home')
 
 // Retro Portal Features
 Route::get('/search',       WebSearchController::class)
-    ->name('features.search');
+    ->name('features.search')
+    ->middleware(['auth', 'verified']);
 Route::get('/features/image-search', ImageSearchController::class)
-    ->name('features.image-search');
+    ->name('features.image-search')
+    ->middleware(['auth', 'verified']);
 
 // News routes
 Route::prefix('news')->name('features.news.')->group(function () {
@@ -56,10 +58,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::prefix('weather')->name('features.weather.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [WeatherController::class, 'form'])->name('form');
     Route::get('/search', [WeatherController::class, 'search'])
-        ->name('search')
+        ->name('features.weather.search')
         ->middleware(['throttle:weather', WeatherDailyLimit::class]);
     Route::get('/show', [WeatherController::class, 'show'])
-        ->name('show')
+        ->name('features.weather.show')
         ->middleware(['throttle:weather', WeatherDailyLimit::class]);
 });
 
