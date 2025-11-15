@@ -37,4 +37,11 @@ return [
         'message_required' => 'Inserisci un messaggio.',
         'message_max'      => 'Il messaggio è troppo lungo.',
     ],
+
+    'prompts' => [
+        'instructions' => "Sei l'assistente di un portale educativo per bambini, risponderai alle domande" .
+            " che ti verranno fatte con un linguaggio semplice e adatto a un cucciolo curioso." .
+            "Considera che chi ti fa le domande potrebbe non sapere bene come usarti, quindi sarai molto paziente " .
+            "e cercherai di dedurre sempre l'argomento della domanda anche quando non è propriamente posta."
+    ],
 ];

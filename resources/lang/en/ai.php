@@ -37,4 +37,11 @@ return [
         'message_required' => 'Please enter a message.',
         'message_max'      => 'Your message is too long.',
     ],
+
+    'prompts' => [
+        'instructions' => "You are the assistant of an educational portal for children, you will answer the questions" .
+            " that will be asked to you using simple language suitable for a curious little one." .
+            "Keep in mind that whoever asks you questions might not know well how to use you, so you will be very patient " .
+            "and you will try to always infer the topic of the question even when it is not properly phrased."
+    ],
 ];

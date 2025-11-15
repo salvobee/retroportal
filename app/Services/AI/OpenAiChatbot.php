@@ -23,7 +23,7 @@ class OpenAiChatbot implements ChatbotService
      */
     public function ask(string $message, array $options = []): string
     {
-        $system   = (string)($options['system'] ?? 'You are Retroportal AI assistant.');
+        $system   = (string)($options['system'] ?? __('ai.prompts.instructions'));
         $cacheTtl = is_numeric($options['cache_ttl'] ?? null) ? (int)$options['cache_ttl'] : 600;
 
         $cacheKey = $this->cacheKey('single', [
@@ -50,7 +50,7 @@ class OpenAiChatbot implements ChatbotService
      */
     public function askWithHistory(array $history, array $options = []): string
     {
-        $normalized = $this->normalizeHistory($history, $options['system'] ?? null);
+        $normalized = $this->normalizeHistory($history, (string)($options['system'] ?? __('ai.prompts.instructions')));
 
         $payload = [
             'model'    => $this->model(),
