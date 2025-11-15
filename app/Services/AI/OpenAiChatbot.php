@@ -109,6 +109,7 @@ class OpenAiChatbot implements ChatbotService
             $base_uri = config('services.openai.base_uri');
             $key = $options['api_key'] ?? (string)config('services.openai.key');
             $resp = Http::withToken($key)
+                ->timeout(300)
                 ->retry(1, 150)
                 ->post("$base_uri/chat/completions", $payload);
 
